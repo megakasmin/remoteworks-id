@@ -1,4 +1,5 @@
 import Button from "../components/ui/Button";
+import Card from "../components/ui/Card";
 
 export default function Home() {
   return (
@@ -13,6 +14,19 @@ export default function Home() {
       <Button>Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button disabled>Disabled</Button>
+      </div>
+
+         <div className="mt-10 grid gap-4">
+        <Card
+          title="Frontend Developer"
+          company="RemoteWorks ID"
+          location="Indonesia"
+        />
+        <Card
+          title="Data Annotator"
+          company="Global AI Company"
+          location="Remote"
+        />
       </div>
 
     </main>
