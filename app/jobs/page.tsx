@@ -1,9 +1,11 @@
 import Card from "../../components/ui/Card";
+import SearchBar from "../../components/ui/SearchBar";
 
 export default function JobsPage() {
   return (
     <main className="p-10">
       <h1 className="text-2xl font-bold mb-6">Remote Jobs</h1>
+      <SearchBar />
 
       <div className="grid gap-4">
         <Card
