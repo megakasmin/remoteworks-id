@@ -2,7 +2,7 @@ type CardProps = {
   title: string;
   company: string;
   location: string;
-  type?: string;
+  type?: "Remote" | "Hybrid" | "Onsite";
 };
 
 export default function Card({
@@ -11,17 +11,28 @@ export default function Card({
   location,
   type = "Remote",
 }: CardProps) {
+  const badgeColor = {
+    Remote: "bg-green-100 text-green-700",
+    Hybrid: "bg-yellow-100 text-yellow-700",
+    Onsite: "bg-gray-200 text-gray-700",
+  };
+
   return (
     <div className="border rounded-lg p-4 hover:shadow transition">
-      <h3 className="text-lg font-semibold">{title}</h3>
+      <div className="flex justify-between items-start">
+        <div>
+          <h3 className="text-lg font-semibold">{title}</h3>
+          <p className="text-gray-600">{company}</p>
+        </div>
 
-      <p className="text-gray-600">{company}</p>
-
-      <div className="mt-2 flex gap-2 text-sm text-gray-500">
-        <span>{location}</span>
-        <span>•</span>
-        <span>{type}</span>
+        <span
+          className={`text-xs px-2 py-1 rounded ${badgeColor[type]}`}
+        >
+          {type}
+        </span>
       </div>
+
+      <p className="mt-2 text-sm text-gray-500">{location}</p>
     </div>
   );
 }

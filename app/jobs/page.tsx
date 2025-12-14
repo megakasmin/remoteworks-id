@@ -8,21 +8,24 @@ export default function JobsPage() {
       <SearchBar />
 
       <div className="grid gap-4">
-        <Card
-          title="Frontend Developer"
-          company="RemoteWorks ID"
-          location="Indonesia"
-        />
-        <Card
-          title="Backend Engineer"
-          company="Startup Singapore"
-          location="Remote"
-        />
-        <Card
-          title="Data Annotator"
-          company="Global AI Company"
-          location="Remote"
-        />
+<Card
+  title="Frontend Developer"
+  company="RemoteWorks ID"
+  location="Indonesia"
+  type="Remote"
+/>
+<Card
+  title="Backend Engineer"
+  company="Startup Singapore"
+  location="Remote"
+  type="Hybrid"
+/>
+<Card
+  title="Data Annotator"
+  company="Global AI Company"
+  location="Remote"
+  type="Remote"
+/>
       </div>
     </main>
   );
