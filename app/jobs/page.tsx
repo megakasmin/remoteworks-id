@@ -1,31 +1,79 @@
+"use client";
+
+import { useState } from "react";
 import Card from "../../components/ui/Card";
 import SearchBar from "../../components/ui/SearchBar";
 
+type JobType = "Remote" | "Hybrid" | "Onsite";
+
+type Job = {
+  title: string;
+  company: string;
+  location: string;
+  type: JobType;
+};
+
+const jobs: Job[] = [
+  {
+    title: "Frontend Developer",
+    company: "RemoteWorks ID",
+    location: "Indonesia",
+    type: "Remote",
+  },
+  {
+    title: "Backend Engineer",
+    company: "Startup Singapore",
+    location: "Remote",
+    type: "Hybrid",
+  },
+  {
+    title: "Data Annotator",
+    company: "Global AI Company",
+    location: "Remote",
+    type: "Remote",
+  },
+];
+
 export default function JobsPage() {
+  // ✅ SEMUA HOOKS HARUS DI SINI
+  const [filter, setFilter] = useState<"All" | JobType>("All");
+  const [search, setSearch] = useState("");
+
+  const filteredJobs = jobs.filter((job) => {
+    const matchType = filter === "All" || job.type === filter;
+    const matchSearch =
+      job.title.toLowerCase().includes(search.toLowerCase()) ||
+      job.company.toLowerCase().includes(search.toLowerCase());
+
+    return matchType && matchSearch;
+  });
+
   return (
     <main className="p-10">
-      <h1 className="text-2xl font-bold mb-6">Remote Jobs</h1>
-      <SearchBar />
+      <h1 className="text-2xl font-bold mb-4">Remote Jobs</h1>
+
+      <SearchBar value={search} onChange={setSearch} />
+
+      <div className="flex gap-2 mb-6">
+        {["All", "Remote", "Hybrid"].map((item) => (
+          <button
+            key={item}
+            onClick={() => setFilter(item as "All" | JobType)}
+            className={`px-3 py-1 rounded border ${
+              filter === item
+                ? "bg-blue-600 text-white"
+                : "bg-white"
+            }`}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
 
       <div className="grid gap-4">
-<Card
-  title="Frontend Developer"
-  company="RemoteWorks ID"
-  location="Indonesia"
-  type="Remote"
-/>
-<Card
-  title="Backend Engineer"
-  company="Startup Singapore"
-  location="Remote"
-  type="Hybrid"
-/>
-<Card
-  title="Data Annotator"
-  company="Global AI Company"
-  location="Remote"
-  type="Remote"
-/>
+        {filteredJobs.map((job, index) => (
+          <Card key={index} {...job} />
+        ))}
       </div>
     </main>
   );

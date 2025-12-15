@@ -1,14 +1,16 @@
-export default function SearchBar() {
+type SearchBarProps = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+export default function SearchBar({ value, onChange }: SearchBarProps) {
   return (
-    <div className="flex gap-2 mb-6">
-      <input
-        type="text"
-        placeholder="Search job or company..."
-        className="border px-3 py-2 rounded w-full"
-      />
-      <button className="px-4 py-2 rounded bg-blue-600 text-white">
-        Search
-      </button>
-    </div>
+    <input
+      type="text"
+      placeholder="Search job or company..."
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="border px-3 py-2 rounded w-full mb-6"
+    />
   );
 }
