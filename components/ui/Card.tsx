@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 type CardProps = {
+  slug: string;
   title: string;
   company: string;
   location: string;
@@ -6,6 +9,7 @@ type CardProps = {
 };
 
 export default function Card({
+  slug,
   title,
   company,
   location,
@@ -18,21 +22,21 @@ export default function Card({
   };
 
   return (
-    <div className="border rounded-lg p-4 hover:shadow transition">
-      <div className="flex justify-between items-start">
-        <div>
-          <h3 className="text-lg font-semibold">{title}</h3>
-          <p className="text-gray-600">{company}</p>
+    <Link href={`/jobs/${slug}`}>
+      <div className="border rounded-lg p-4 hover:shadow transition cursor-pointer">
+        <div className="flex justify-between items-start">
+          <div>
+            <h3 className="text-lg font-semibold">{title}</h3>
+            <p className="text-gray-600">{company}</p>
+          </div>
+
+          <span className={`text-xs px-2 py-1 rounded ${badgeColor[type]}`}>
+            {type}
+          </span>
         </div>
 
-        <span
-          className={`text-xs px-2 py-1 rounded ${badgeColor[type]}`}
-        >
-          {type}
-        </span>
+        <p className="mt-2 text-sm text-gray-500">{location}</p>
       </div>
-
-      <p className="mt-2 text-sm text-gray-500">{location}</p>
-    </div>
+    </Link>
   );
 }

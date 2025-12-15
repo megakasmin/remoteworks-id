@@ -17,16 +17,27 @@ export default function Home() {
       </div>
 
          <div className="mt-10 grid gap-4">
-        <Card
-          title="Frontend Developer"
-          company="RemoteWorks ID"
-          location="Indonesia"
-        />
-        <Card
-          title="Data Annotator"
-          company="Global AI Company"
-          location="Remote"
-        />
+       <Card
+  slug="frontend-developer"
+  title="Frontend Developer"
+  company="RemoteWorks ID"
+  location="Indonesia"
+  type="Remote"
+/>
+<Card
+  slug="frontend-developer"
+  title="Frontend Developer"
+  company="RemoteWorks ID"
+  location="Indonesia"
+  type="Remote"
+/>
+<Card
+  slug="frontend-developer"
+  title="Frontend Developer"
+  company="RemoteWorks ID"
+  location="Indonesia"
+  type="Remote"
+/>
       </div>
 
     </main>

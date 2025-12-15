@@ -28,6 +28,14 @@ const jobs: Job[] = [
     type: "Hybrid",
     description: "Build scalable backend services.",
   },
+  {
+    slug: "data-annotator",
+    title: "Data Annotator",
+    company: "Global AI Company",
+    location: "Remote",
+    type: "Remote",
+    description: "Annotate data for AI and machine learning models.",
+  },
 ];
 
 export default async function JobDetailPage({

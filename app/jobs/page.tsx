@@ -7,6 +7,7 @@ import SearchBar from "../../components/ui/SearchBar";
 type JobType = "Remote" | "Hybrid" | "Onsite";
 
 type Job = {
+  slug: string;
   title: string;
   company: string;
   location: string;
@@ -15,24 +16,28 @@ type Job = {
 
 const jobs: Job[] = [
   {
+    slug: "frontend-developer",
     title: "Frontend Developer",
     company: "RemoteWorks ID",
     location: "Indonesia",
     type: "Remote",
   },
   {
+    slug: "backend-engineer",
     title: "Backend Engineer",
     company: "Startup Singapore",
     location: "Remote",
     type: "Hybrid",
   },
   {
+    slug: "data-annotator",
     title: "Data Annotator",
     company: "Global AI Company",
     location: "Remote",
     type: "Remote",
   },
 ];
+
 
 export default function JobsPage() {
   // ✅ SEMUA HOOKS HARUS DI SINI
