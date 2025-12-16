@@ -44,3 +44,53 @@ This is intentionally built as an **MVP**, focusing on core functionality rather
 
 ## 📁 Project Structure (Simplified)
 
+app/
+├─ page.tsx # Homepage
+├─ jobs/
+│ ├─ page.tsx # Job listing (search & filter)
+│ ├─ layout.tsx # SEO metadata for jobs
+│ └─ [slug]/
+│ └─ page.tsx # Job detail + apply flow
+components/
+└─ ui/
+├─ Card.tsx
+└─ Button.tsx
+
+
+---
+
+## 📝 Apply Flow (How It Works)
+
+1. User opens a job detail page
+2. Clicks **Apply Now**
+3. Modal form appears
+4. User submits application
+5. Success message is shown (client-side simulation)
+
+> No backend is used at this stage — the goal is to demonstrate UX and frontend logic.
+
+---
+
+## 🔍 SEO Approach
+
+- Page-level metadata using `metadata` export
+- Layout-based SEO for client components
+- Clean and readable URLs (`/jobs/[slug]`)
+
+---
+
+## 📌 Future Improvements
+
+- Dynamic SEO per job
+- Backend integration (API & database)
+- User authentication
+- Employer dashboard
+- Save / bookmark jobs
+
+---
+
+## 🙌 Author
+
+Built with ❤️ by **Mega Iriantika Kasmin**
+
+If you have feedback or suggestions, feel free to reach out.
