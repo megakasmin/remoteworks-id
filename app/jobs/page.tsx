@@ -77,9 +77,18 @@ export default function JobsPage() {
       </div>
 
       <div className="grid gap-4">
-        {filteredJobs.map((job, index) => (
-          <Card key={index} {...job} />
-        ))}
+        {filteredJobs.length === 0 ? (
+  <div className="text-center py-20 text-gray-500">
+    <p className="text-lg font-medium">No jobs found</p>
+    <p className="text-sm mt-2">
+      Try adjusting your search or filter.
+    </p>
+  </div>
+) : (
+  filteredJobs.map((job) => (
+    <Card key={job.slug} {...job} />
+  ))
+)}
       </div>
     </main>
   );
