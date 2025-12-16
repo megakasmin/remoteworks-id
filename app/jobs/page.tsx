@@ -4,6 +4,7 @@ import { useState } from "react";
 import Card from "../../components/ui/Card";
 import SearchBar from "../../components/ui/SearchBar";
 
+
 type JobType = "Remote" | "Hybrid" | "Onsite";
 
 type Job = {

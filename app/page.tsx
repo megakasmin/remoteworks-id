@@ -1,6 +1,12 @@
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 
+export const metadata = {
+  title: "RemoteWorks ID — Find Remote & Hybrid Jobs",
+  description:
+    "RemoteWorks ID helps you find remote and hybrid job opportunities from Indonesia and global companies.",
+};
+
 export default function Home() {
   return (
     <main className="p-10">
