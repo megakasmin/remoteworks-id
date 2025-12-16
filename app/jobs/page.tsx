@@ -1,95 +1,123 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../../components/ui/Card";
-import SearchBar from "../../components/ui/SearchBar";
-
-
-type JobType = "Remote" | "Hybrid" | "Onsite";
 
 type Job = {
   slug: string;
   title: string;
   company: string;
   location: string;
-  type: JobType;
+  type: "Remote" | "Hybrid";
 };
+
 
 const jobs: Job[] = [
   {
     slug: "frontend-developer",
     title: "Frontend Developer",
-    company: "RemoteWorks ID",
-    location: "Indonesia",
+    company: "Tech Company",
+    location: "Remote",
     type: "Remote",
   },
   {
     slug: "backend-engineer",
     title: "Backend Engineer",
-    company: "Startup Singapore",
-    location: "Remote",
+    company: "Startup Inc",
+    location: "Jakarta",
     type: "Hybrid",
   },
   {
     slug: "data-annotator",
     title: "Data Annotator",
-    company: "Global AI Company",
+    company: "AI Labs",
     location: "Remote",
     type: "Remote",
   },
 ];
 
+function JobCardSkeleton() {
+  return (
+    <div className="border rounded-xl p-4 animate-pulse space-y-3">
+      <div className="h-4 bg-gray-200 rounded w-3/4" />
+      <div className="h-3 bg-gray-200 rounded w-1/2" />
+      <div className="h-3 bg-gray-200 rounded w-1/3" />
+    </div>
+  );
+}
 
 export default function JobsPage() {
-  // ✅ SEMUA HOOKS HARUS DI SINI
-  const [filter, setFilter] = useState<"All" | JobType>("All");
   const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("All");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredJobs = jobs.filter((job) => {
-    const matchType = filter === "All" || job.type === filter;
     const matchSearch =
       job.title.toLowerCase().includes(search.toLowerCase()) ||
       job.company.toLowerCase().includes(search.toLowerCase());
 
-    return matchType && matchSearch;
+    const matchFilter =
+      filter === "All" ? true : job.type === filter;
+
+    return matchSearch && matchFilter;
   });
 
   return (
-    <main className="p-10">
-      <h1 className="text-2xl font-bold mb-4">Remote Jobs</h1>
+    <main className="max-w-4xl mx-auto px-4 py-10">
+      <h1 className="text-3xl font-bold mb-6">
+        Remote & Hybrid Jobs
+      </h1>
 
-      <SearchBar value={search} onChange={setSearch} />
+      {/* Search & Filter */}
+      <div className="flex gap-3 mb-8">
+        <input
+          type="text"
+          placeholder="Search job or company..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="flex-1 border rounded-lg px-4 py-2 focus:outline-none focus:ring"
+        />
 
-      <div className="flex gap-2 mb-6">
-        {["All", "Remote", "Hybrid"].map((item) => (
-          <button
-            key={item}
-            onClick={() => setFilter(item as "All" | JobType)}
-            className={`px-3 py-1 rounded border ${
-              filter === item
-                ? "bg-blue-600 text-white"
-                : "bg-white"
-            }`}
-          >
-            {item}
-          </button>
-        ))}
+        <select
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="border rounded-lg px-3 py-2"
+        >
+          <option value="All">All</option>
+          <option value="Remote">Remote</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
       </div>
 
-      <div className="grid gap-4">
-        {filteredJobs.length === 0 ? (
-  <div className="text-center py-20 text-gray-500">
-    <p className="text-lg font-medium">No jobs found</p>
-    <p className="text-sm mt-2">
-      Try adjusting your search or filter.
-    </p>
-  </div>
-) : (
-  filteredJobs.map((job) => (
-    <Card key={job.slug} {...job} />
-  ))
-)}
-      </div>
+      {/* Job List */}
+      {loading ? (
+        <div className="grid gap-4">
+          {[...Array(3)].map((_, i) => (
+            <JobCardSkeleton key={i} />
+          ))}
+        </div>
+      ) : filteredJobs.length === 0 ? (
+        <div className="text-center py-20 text-gray-500">
+          <p className="text-lg font-medium">No jobs found</p>
+          <p className="text-sm mt-2">
+            Try adjusting your search or filter.
+          </p>
+        </div>
+      ) : (
+        <div className="grid gap-4">
+{filteredJobs.map((job) => (
+  <Card key={job.slug} {...job} />
+))}
+        </div>
+      )}
     </main>
   );
 }

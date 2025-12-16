@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-type CardProps = {
+export type CardProps = {
   slug: string;
   title: string;
   company: string;
   location: string;
-  type?: "Remote" | "Hybrid" | "Onsite";
+  type: "Remote" | "Hybrid";
 };
 
 export default function Card({
@@ -13,29 +13,31 @@ export default function Card({
   title,
   company,
   location,
-  type = "Remote",
+  type,
 }: CardProps) {
-  const badgeColor = {
-    Remote: "bg-green-100 text-green-700",
-    Hybrid: "bg-yellow-100 text-yellow-700",
-    Onsite: "bg-gray-200 text-gray-700",
-  };
+  const badgeStyle =
+    type === "Remote"
+      ? "bg-blue-100 text-blue-700"
+      : "bg-purple-100 text-purple-700";
 
   return (
     <Link href={`/jobs/${slug}`}>
-      <div className="border rounded-lg p-4 hover:shadow transition cursor-pointer">
-        <div className="flex justify-between items-start">
+      <div className="border rounded-xl p-4 hover:shadow-md transition cursor-pointer">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-lg font-semibold">{title}</h3>
-            <p className="text-gray-600">{company}</p>
+            <h2 className="text-lg font-semibold">{title}</h2>
+            <p className="text-sm text-gray-600">{company}</p>
+            <p className="text-sm text-gray-500">{location}</p>
           </div>
 
-          <span className={`text-xs px-2 py-1 rounded ${badgeColor[type]}`}>
+          {/* Badge */}
+          <span
+            className={`text-xs font-medium px-2 py-1 rounded ${badgeStyle}`}
+          >
             {type}
           </span>
         </div>
-
-        <p className="mt-2 text-sm text-gray-500">{location}</p>
       </div>
     </Link>
   );
