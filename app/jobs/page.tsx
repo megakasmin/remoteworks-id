@@ -2,39 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Card from "../../components/ui/Card";
-
-type Job = {
-  slug: string;
-  title: string;
-  company: string;
-  location: string;
-  type: "Remote" | "Hybrid";
-};
-
-
-const jobs: Job[] = [
-  {
-    slug: "frontend-developer",
-    title: "Frontend Developer",
-    company: "Tech Company",
-    location: "Remote",
-    type: "Remote",
-  },
-  {
-    slug: "backend-engineer",
-    title: "Backend Engineer",
-    company: "Startup Inc",
-    location: "Jakarta",
-    type: "Hybrid",
-  },
-  {
-    slug: "data-annotator",
-    title: "Data Annotator",
-    company: "AI Labs",
-    location: "Remote",
-    type: "Remote",
-  },
-];
+import { getJobs } from "../../lib/jobs";
+import type { Job, JobType } from "../../lib/jobs";
 
 function JobCardSkeleton() {
   return (
@@ -48,8 +17,10 @@ function JobCardSkeleton() {
 
 export default function JobsPage() {
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState<"All" | JobType>("All");
   const [loading, setLoading] = useState(true);
+
+  const jobs: Job[] = getJobs();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -88,7 +59,9 @@ export default function JobsPage() {
 
         <select
           value={filter}
-          onChange={(e) => setFilter(e.target.value)}
+          onChange={(e) =>
+            setFilter(e.target.value as "All" | JobType)
+          }
           className="border rounded-lg px-3 py-2"
         >
           <option value="All">All</option>
@@ -113,9 +86,9 @@ export default function JobsPage() {
         </div>
       ) : (
         <div className="grid gap-4">
-{filteredJobs.map((job) => (
-  <Card key={job.slug} {...job} />
-))}
+          {filteredJobs.map((job) => (
+            <Card key={job.slug} {...job} />
+          ))}
         </div>
       )}
     </main>
