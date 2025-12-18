@@ -1,5 +1,3 @@
-export type JobType = "Remote" | "Hybrid";
-
 export type Job = {
   slug: string;
   title: string;
