@@ -5,9 +5,12 @@ export type Job = {
   title: string;
   company: string;
   location: string;
-  type: JobType;
+  type: "Remote" | "Hybrid";
   description: string;
+  applyUrl: string;
+  verified: boolean;
 };
+
 
 export const jobs: Job[] = [
   {
@@ -18,6 +21,8 @@ export const jobs: Job[] = [
     type: "Remote",
     description:
       "We are looking for a Frontend Developer to build modern, responsive web interfaces using React and Next.js.",
+    applyUrl: "https://www.linkedin.com/jobs/test",
+    verified: true,
   },
   {
     slug: "backend-engineer",
@@ -27,6 +32,8 @@ export const jobs: Job[] = [
     type: "Hybrid",
     description:
       "Join our backend team to build scalable APIs and services using modern backend technologies.",
+    applyUrl: "https://www.linkedin.com/jobs/test",
+    verified: true,
   },
   {
     slug: "data-annotator",
@@ -36,6 +43,8 @@ export const jobs: Job[] = [
     type: "Remote",
     description:
       "Work on AI and machine learning projects by annotating and validating datasets remotely.",
+    applyUrl: "https://www.linkedin.com/jobs/test",
+    verified: true,
   },
 ];
 
