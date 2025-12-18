@@ -1,96 +1,100 @@
-# RemoteWorks ID 🌍
+# RemoteWorks ID
 
-RemoteWorks ID is a simple job portal MVP that helps users find **remote and hybrid job opportunities**, especially in tech and digital roles.  
-This project was built as a **learning project and portfolio**, focusing on clean UX, modern frontend architecture, and realistic product flow.
+RemoteWorks ID is a **curated remote & hybrid job platform** focused on tech, data, and digital roles.  
+The platform prioritizes **job quality, trust, and transparency**, helping job seekers discover legitimate opportunities without noise or scams.
 
-## 🚀 Live Demo
-👉 https://remoteworks-id.vercel.app/
-
----
-
-## ✨ Features
-
-- Job listing page with clean UI
-- Search jobs in real-time
-- Filter jobs by type (Remote / Hybrid)
-- Job detail page with dynamic routing
-- Apply job flow with modal form
-- Success state after application
-- SEO-ready structure using Next.js App Router
+> Built as a real product — not just a portfolio demo.
 
 ---
 
-## 🧠 Why This Project?
+## Live Demo
 
-I built this project to:
-- Learn how to build a real-world product using **Next.js App Router**
-- Understand **component structure, routing, and state management**
-- Create a **portfolio-ready project** that reflects real product thinking
-- Practice building UX flows without relying on backend services
-
-This is intentionally built as an **MVP**, focusing on core functionality rather than complexity.
+🔗 https://remoteworks-id.vercel.app/
 
 ---
 
-## 🛠 Tech Stack
+## Key Features
 
-- **Next.js 14 (App Router)**
-- **React**
-- **TypeScript**
-- **Tailwind CSS**
-- **Vercel** (Deployment)
+- **Curated Job Listings**  
+  Every job is manually reviewed before publication to ensure legitimacy and relevance.
 
----
+- **Verified Badge System**  
+  Jobs that pass internal checks are marked as *Verified* for user trust.
 
-## 📁 Project Structure (Simplified)
+- **Apply Redirect Flow (No Data Storage)**  
+  Applications are completed on the employer’s official website.  
+  RemoteWorks ID does **not collect or store applicant data**.
 
-app/
-├─ page.tsx # Homepage
-├─ jobs/
-│ ├─ page.tsx # Job listing (search & filter)
-│ ├─ layout.tsx # SEO metadata for jobs
-│ └─ [slug]/
-│ └─ page.tsx # Job detail + apply flow
-components/
-└─ ui/
-├─ Card.tsx
-└─ Button.tsx
+- **Trust & Safety First**  
+  Clear policies on scam prevention, transparent disclaimers, and reporting channels.
 
+- **SEO-Optimized Pages**  
+  Dynamic metadata for job listings to support discoverability.
+
+- **Responsive & Accessible UI**  
+  Designed for desktop and mobile, with keyboard-accessible interactions.
 
 ---
 
-## 📝 Apply Flow (How It Works)
+## Product Philosophy
 
-1. User opens a job detail page
-2. Clicks **Apply Now**
-3. Modal form appears
-4. User submits application
-5. Success message is shown (client-side simulation)
+RemoteWorks ID is intentionally **not** a traditional applicant tracking system.
 
-> No backend is used at this stage — the goal is to demonstrate UX and frontend logic.
+Instead, it operates as a **job discovery and trust layer**:
 
----
+- We help users **find** opportunities
+- We help employers **gain visibility**
+- We do **not** interfere with the hiring process
 
-## 🔍 SEO Approach
-
-- Page-level metadata using `metadata` export
-- Layout-based SEO for client components
-- Clean and readable URLs (`/jobs/[slug]`)
+This approach keeps the platform:
+- Lightweight
+- Scalable
+- Legally safer
+- User-centric
 
 ---
 
-## 📌 Future Improvements
+## Trust & Safety
 
-- Dynamic SEO per job
-- Backend integration (API & database)
-- User authentication
-- Employer dashboard
-- Save / bookmark jobs
+- No job listings requiring application fees
+- No unofficial communication channels (WhatsApp, Telegram, etc.)
+- No misleading income claims
+- Manual review for all job submissions
+
+## Tech Stack
+
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
+- **Architecture**:
+  - Server Components for data & routing
+  - Client Components for UI interactions
+  - Clean separation of concerns
 
 ---
 
-## 🙌 Author
+## Roadmap
 
-Built with ❤️ by **Mega Iriantika Kasmin**
+- Employer submission flow (manual review)
+- Job categories & filters
+- Saved jobs (local-only)
+- Analytics for curated listings
+- International remote listings
 
-If you have feedback or suggestions, feel free to reach out.
+---
+
+## Author
+
+Built by **Mega Iriantika Kasmin**  
+Focused on building meaningful digital products with clean UX and thoughtful architecture.
+
+---
+
+## Notes
+
+This project was built to demonstrate:
+- Real-world product thinking
+- Clean Next.js App Router architecture
+- UX decisions aligned with trust & safety
+- Scalable foundations for future growth
