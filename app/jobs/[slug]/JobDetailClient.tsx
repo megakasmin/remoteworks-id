@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ApplyRedirectModal from "@/components/apply/ApplyRedirectModal";
-import { Job } from "@/lib/jobs";
+import type { Job } from "@/lib/jobs";
 import Button from "@/components/ui/Button";
 
 export default function JobDetailClient({ job }: { job: Job }) {
