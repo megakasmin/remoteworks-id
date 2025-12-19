@@ -1,9 +1,12 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import { useEffect, useState } from "react";
 import Card from "../../components/ui/Card";
 import { getJobs } from "../../lib/jobs";
-import type { Job, JobType } from "../../lib/jobs";
+import type { JobDetail } from "@/lib/jobs";
+import type { JobType } from "@/lib/jobs";
 
 function JobCardSkeleton() {
   return (
@@ -20,7 +23,7 @@ export default function JobsPage() {
   const [filter, setFilter] = useState<"All" | JobType>("All");
   const [loading, setLoading] = useState(true);
 
-  const jobs: Job[] = getJobs();
+const jobs: JobDetail[] = getJobs();
 
   useEffect(() => {
     const timer = setTimeout(() => {

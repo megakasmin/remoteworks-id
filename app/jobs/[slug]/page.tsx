@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import { jobs } from "@/lib/jobs";
 import JobDetailClient from "./JobDetailClient";

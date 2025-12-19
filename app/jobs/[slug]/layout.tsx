@@ -18,7 +18,6 @@ export async function generateMetadata({
 
   return {
     title: `${job.title} at ${job.company} — RemoteWorks ID`,
-    description: job.description,
   };
 }
 
