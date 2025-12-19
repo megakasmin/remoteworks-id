@@ -1,23 +1,23 @@
-import { Metadata } from "next";
-import { jobs } from "@/lib/jobs";
+import type { Metadata } from "next";
+import { getJobBySlug } from "@/lib/jobs";
 
-export async function generateMetadata({
-  params,
-}: {
+type LayoutProps = {
   params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
+};
 
-  const job = jobs.find((j) => j.slug === slug);
+export async function generateMetadata(
+  { params }: LayoutProps
+): Promise<Metadata> {
+  const { slug } = await params;
+  const job = getJobBySlug(slug);
 
   if (!job) {
-    return {
-      title: "Job Not Found — RemoteWorks ID",
-    };
+    return { title: "Job Not Found — RemoteWorks ID" };
   }
 
   return {
-    title: `${job.title} at ${job.company} — RemoteWorks ID`,
+    title: `${job.title} — RemoteWorks ID`,
+    description: `Apply for ${job.title} at ${job.company}`,
   };
 }
 

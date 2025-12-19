@@ -17,15 +17,15 @@ export const jobs: JobDetail[] = [
     company: "Tech Company",
     location: "Jakarta / Remote",
     type: "Hybrid",
-    applyUrl: "www.linkedin.com/in/mega-iriantika-kasmin",
-  },
+    applyUrl: "https://www.linkedin.com/in/mega-iriantika-kasmin",
+  }, 
   {
     slug: "data-annotator",
     title: "Data Annotator",
     company: "AI Labs",
     location: "Remote",
     type: "Remote",
-    applyUrl: "www.linkedin.com/in/mega-iriantika-kasmin",
+    applyUrl: "https://www.linkedin.com/in/mega-iriantika-kasmin",
   },
 ];
 
