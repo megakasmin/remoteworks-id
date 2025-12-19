@@ -1,11 +1,14 @@
+export type JobType = "Remote" | "Hybrid";
+
 export type JobDetail = {
   slug: string;
   title: string;
   company: string;
   location: string;
-  type: string;
+  type: JobType;
   applyUrl: string;
 };
+
 
 export const jobs: JobDetail[] = [
   {
