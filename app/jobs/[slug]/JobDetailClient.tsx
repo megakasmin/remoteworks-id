@@ -2,29 +2,24 @@
 
 import { useState } from "react";
 import ApplyRedirectModal from "@/components/apply/ApplyRedirectModal";
-import type { Job } from "@/lib/jobs";
+import type { JobDetail } from "@/lib/jobs";
 import Button from "@/components/ui/Button";
 
-export default function JobDetailClient({ job }: { job: Job }) {
-  const [open, setOpen] = useState(false);
+export default function JobDetailClient({ job }: { job: JobDetail }) {
+  const [open, setOpen] = useState(false); // ← INI WAJIB
 
   return (
     <>
-      <main className="max-w-3xl mx-auto px-4 py-10 space-y-6">
-        <h1 className="text-2xl font-bold">{job.title}</h1>
-        <p className="text-gray-600">{job.company}</p>
-
-        <Button onClick={() => setOpen(true)}>
-          Apply Now
-        </Button>
-      </main>
+      <Button onClick={() => setOpen(true)}>
+        Apply Now
+      </Button>
 
       <ApplyRedirectModal
         open={open}
         onClose={() => setOpen(false)}
+        applyUrl={job.applyUrl}
         jobTitle={job.title}
         company={job.company}
-        applyUrl={job.applyUrl}
       />
     </>
   );
