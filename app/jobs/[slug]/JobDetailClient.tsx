@@ -4,6 +4,7 @@ import { useState } from "react";
 import ApplyRedirectModal from "@/components/apply/ApplyRedirectModal";
 import Button from "@/components/ui/Button";
 import type { JobDetail } from "@/lib/jobs";
+import Link from "next/link";
 
 export default function JobDetailClient({ job }: { job: JobDetail }) {
   const [open, setOpen] = useState(false);
@@ -24,6 +25,15 @@ export default function JobDetailClient({ job }: { job: JobDetail }) {
         <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded">
           {job.type}
         </span>
+        
+          {job.curated && (
+    <Link
+      href="/verify"
+      className="bg-green-100 text-green-700 px-3 py-1 rounded hover:underline"
+    >
+      ✔ Curated by RemoteWorks ID
+    </Link>
+  )}
       </div>
 
       {/* Description (dummy for now) */}

@@ -7,6 +7,7 @@ export type JobDetail = {
   location: string;
   type: JobType;
   applyUrl: string;
+  curated?: boolean;
 };
 
 
@@ -18,6 +19,7 @@ export const jobs: JobDetail[] = [
     location: "Jakarta",
     type: "Hybrid",
     applyUrl: "https://www.linkedin.com/in/mega-iriantika-kasmin",
+    curated: true,
   }, 
   {
     slug: "data-annotator",
@@ -26,6 +28,7 @@ export const jobs: JobDetail[] = [
     location: "Singapura",
     type: "Remote",
     applyUrl: "https://www.linkedin.com/in/mega-iriantika-kasmin",
+    curated: true,
   },
 ];
 
