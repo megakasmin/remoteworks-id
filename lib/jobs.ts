@@ -1,37 +1,20 @@
-export type Job = {
+export type JobDetail = {
   slug: string;
   title: string;
   company: string;
   location: string;
-  type: "Remote" | "Hybrid";
-  description: string;
+  type: string;
   applyUrl: string;
-  verified: boolean;
 };
 
-
-export const jobs: Job[] = [
+export const jobs: JobDetail[] = [
   {
     slug: "frontend-developer",
     title: "Frontend Developer",
     company: "Tech Company",
-    location: "Remote",
-    type: "Remote",
-    description:
-      "We are looking for a Frontend Developer to build modern, responsive web interfaces using React and Next.js.",
-    applyUrl: "https://www.linkedin.com/jobs/test",
-    verified: true,
-  },
-  {
-    slug: "backend-engineer",
-    title: "Backend Engineer",
-    company: "Startup Inc",
-    location: "Jakarta",
+    location: "Jakarta / Remote",
     type: "Hybrid",
-    description:
-      "Join our backend team to build scalable APIs and services using modern backend technologies.",
-    applyUrl: "https://www.linkedin.com/jobs/test",
-    verified: true,
+    applyUrl: "https://example.com/apply/frontend",
   },
   {
     slug: "data-annotator",
@@ -39,23 +22,6 @@ export const jobs: Job[] = [
     company: "AI Labs",
     location: "Remote",
     type: "Remote",
-    description:
-      "Work on AI and machine learning projects by annotating and validating datasets remotely.",
-    applyUrl: "https://www.linkedin.com/jobs/test",
-    verified: true,
+    applyUrl: "https://example.com/apply/data-annotator",
   },
 ];
-
-/**
- * Helper: get all jobs
- */
-export function getJobs() {
-  return jobs;
-}
-
-/**
- * Helper: get job by slug
- */
-export function getJobBySlug(slug: string) {
-  return jobs.find((job) => job.slug === slug);
-}
