@@ -140,6 +140,61 @@ export default function SubmitJobClient() {
 
         <Button type="submit">Submit for Review</Button>
       </form>
+
+      {/* Monetization Section */}
+<section className="mt-16 border-t pt-10 space-y-8">
+  <h2 className="text-2xl font-semibold">
+    Optional Visibility & Review Options
+  </h2>
+
+  {/* Priority Review */}
+  <div className="border rounded-xl p-6 space-y-3">
+    <h3 className="text-lg font-semibold">Priority Review</h3>
+
+    <p className="text-gray-700">
+      For employers who need faster review turnaround.
+    </p>
+
+    <ul className="list-disc list-inside text-sm text-gray-600">
+      <li>Faster manual review by our team</li>
+      <li>Same quality and verification standards</li>
+      <li>No guarantee of publication</li>
+      <li>Ideal for time-sensitive roles</li>
+    </ul>
+
+    <p className="text-xs text-gray-500">
+      Priority Review affects review speed, not editorial decisions.
+    </p>
+  </div>
+
+  {/* Featured Listing */}
+  <div className="border rounded-xl p-6 space-y-3">
+    <h3 className="text-lg font-semibold">Featured Listing</h3>
+
+    <p className="text-gray-700">
+      Highlight your job to increase visibility.
+    </p>
+
+    <ul className="list-disc list-inside text-sm text-gray-600">
+      <li>Featured placement on job listings</li>
+      <li>Higher visibility to relevant candidates</li>
+      <li>Available only for approved jobs</li>
+      <li>Limited availability</li>
+    </ul>
+
+    <p className="text-xs text-gray-500">
+      Featured listings must meet all verification standards.
+    </p>
+  </div>
+
+  {/* Trust Disclaimer */}
+  <div className="bg-gray-50 border rounded-xl p-4 text-sm text-gray-600">
+    RemoteWorks ID does not sell job approvals. All submissions are reviewed
+    manually. Monetization options apply only to review speed or listing
+    visibility.
+  </div>
+</section>
+
     </section>
   );
 }
