@@ -17,7 +17,7 @@ export const jobs: JobDetail[] = [
     company: "Tech Company",
     location: "Jakarta / Remote",
     type: "Hybrid",
-    applyUrl: "https://example.com/apply/frontend",
+    applyUrl: "www.linkedin.com/in/mega-iriantika-kasmin",
   },
   {
     slug: "data-annotator",
@@ -25,7 +25,7 @@ export const jobs: JobDetail[] = [
     company: "AI Labs",
     location: "Remote",
     type: "Remote",
-    applyUrl: "https://example.com/apply/data-annotator",
+    applyUrl: "www.linkedin.com/in/mega-iriantika-kasmin",
   },
 ];
 
