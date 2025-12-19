@@ -19,7 +19,7 @@ export default function JobDetailClient({ job }: { job: JobDetail }) {
       {/* Meta */}
       <div className="flex flex-wrap gap-3 text-sm">
         <span className="bg-gray-100 text-blue-700 px-3 py-1 rounded">
-          📍 {job.location}
+          {job.location}
         </span>
         <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded">
           {job.type}
