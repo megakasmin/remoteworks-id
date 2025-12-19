@@ -25,3 +25,11 @@ export const jobs: JobDetail[] = [
     applyUrl: "https://example.com/apply/data-annotator",
   },
 ];
+
+export function getJobs() {
+  return jobs;
+}
+
+export function getJobBySlug(slug: string) {
+  return jobs.find((job) => job.slug === slug);
+}
