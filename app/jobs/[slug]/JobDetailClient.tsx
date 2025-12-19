@@ -6,7 +6,7 @@ import type { JobDetail } from "@/lib/jobs";
 import Button from "@/components/ui/Button";
 
 export default function JobDetailClient({ job }: { job: JobDetail }) {
-  const [open, setOpen] = useState(false); // ← INI WAJIB
+  const [open, setOpen] = useState(false);
 
   return (
     <>
