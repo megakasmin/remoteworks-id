@@ -1,18 +1,17 @@
-import "./globals.css";
-import Footer from "@/components/layout/footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
     default: "RemoteWorks ID — Curated Remote & Hybrid Jobs",
-    template: "%s — RemoteWorks ID",
+    template: "%s | RemoteWorks ID",
   },
   description:
-    "Curated remote and hybrid jobs in tech, data, and digital roles. Reviewed for trust, clarity, and legitimacy.",
+    "Curated remote and hybrid job opportunities with a trust-first review process for job seekers and employers.",
+  metadataBase: new URL("https://remoteworks-id.vercel.app"),
   openGraph: {
     title: "RemoteWorks ID",
     description:
-      "Curated remote & hybrid jobs you can trust.",
+      "Find curated remote & hybrid jobs. Employers can post trusted listings reviewed by our team.",
     url: "https://remoteworks-id.vercel.app",
     siteName: "RemoteWorks ID",
     images: [
@@ -20,31 +19,17 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "RemoteWorks ID",
+        alt: "RemoteWorks ID — Curated Remote & Hybrid Jobs",
       },
     ],
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "RemoteWorks ID",
     description:
-      "Curated remote & hybrid jobs you can trust.",
+      "Curated remote & hybrid job platform with a trust-first approach.",
     images: ["/og.png"],
   },
 };
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body className="min-h-screen bg-white text-gray-900 flex flex-col">
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
-    </html>
-  );
-}
