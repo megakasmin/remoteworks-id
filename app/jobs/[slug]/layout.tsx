@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import { getJobBySlug } from "@/lib/jobs";
 
-type Props = {
+type LayoutProps = {
   children: React.ReactNode;
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata(
-  { params }: Props
+  { params }: LayoutProps
 ): Promise<Metadata> {
-  const job = getJobBySlug(params.slug);
+  const { slug } = await params;
+  const job = getJobBySlug(slug);
 
   if (!job) {
     return {
-      title: "Job - RemoteWorks ID",
+      title: "Job Not Found — RemoteWorks ID",
     };
   }
 
@@ -23,7 +24,12 @@ export async function generateMetadata(
   };
 }
 
-export default function JobDetailLayout({ children }: Props) {
+export default async function JobDetailLayout(
+  { children, params }: LayoutProps
+) {
+  // params HARUS di-await meskipun tidak dipakai
+  await params;
+
   return (
     <section className="max-w-4xl mx-auto px-4 py-8">
       {children}
