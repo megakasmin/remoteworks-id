@@ -114,6 +114,38 @@ export default function SubmitJobPage() {
   </div>
 </section>
 
+<section className="mt-10 border-t pt-6">
+  <h3 className="text-sm font-semibold text-gray-700 mb-2">
+    Trust & Safety
+  </h3>
+
+  <p className="text-sm text-gray-600 mb-3">
+    All job listings on RemoteWorks ID go through internal checks to help protect
+    job seekers from misleading or fraudulent postings.
+  </p>
+
+  <p className="text-xs text-gray-500 mb-4">
+    Semua lowongan akan melalui proses peninjauan internal untuk menjaga keamanan
+    dan kualitas platform.
+  </p>
+
+  <div className="flex gap-4 text-sm">
+    <a
+      href="/verify"
+      className="text-blue-600 hover:underline"
+    >
+      Learn about verification
+    </a>
+    <a
+      href="/trust-safety"
+      className="text-blue-600 hover:underline"
+    >
+      Trust & safety policy
+    </a>
+  </div>
+</section>
+
+
       {/* FORM */}
       <form onSubmit={handleSubmit} className="space-y-6">
 

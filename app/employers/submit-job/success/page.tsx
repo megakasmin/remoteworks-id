@@ -23,7 +23,17 @@ export default function SubmitJobSuccessPage() {
         Tim kami akan melakukan peninjauan sesuai dengan opsi yang Anda pilih.
       </p>
 
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <p className="text-xs text-gray-500 mt-6">
+  Every submission is reviewed by our team. Priority Review affects review speed,
+  while verification is granted separately after internal checks.
+</p>
+
+<p className="text-xs text-gray-400 mt-2">
+  Setiap pengajuan ditinjau oleh tim kami. Priority Review memengaruhi kecepatan
+  peninjauan, sedangkan verifikasi diberikan secara terpisah.
+</p>
+
+      <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           href="/employers/submit-job"
           className="px-6 py-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition"
