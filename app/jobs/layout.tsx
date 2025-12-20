@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Remote & Hybrid Jobs",
+export const metadata = {
+  title: "Remote & Hybrid Jobs — RemoteWorks ID",
   description:
-    "Browse curated remote and hybrid job opportunities reviewed by RemoteWorks ID.",
+    "Browse remote and hybrid job opportunities in tech, data, and digital roles.",
 };
+
+export default function JobsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <>{children}</>;
+}
