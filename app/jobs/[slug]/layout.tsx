@@ -1,30 +1,32 @@
 import type { Metadata } from "next";
 import { getJobBySlug } from "@/lib/jobs";
 
-type LayoutProps = {
-  params: Promise<{ slug: string }>;
+type Props = {
+  children: React.ReactNode;
+  params: { slug: string };
 };
 
 export async function generateMetadata(
-  { params }: LayoutProps
+  { params }: Props
 ): Promise<Metadata> {
-  const { slug } = await params;
-  const job = getJobBySlug(slug);
+  const job = getJobBySlug(params.slug);
 
   if (!job) {
-    return { title: "Job Not Found — RemoteWorks ID" };
+    return {
+      title: "Job - RemoteWorks ID",
+    };
   }
 
   return {
-    title: `${job.title} — RemoteWorks ID`,
-    description: `Apply for ${job.title} at ${job.company}`,
+    title: `${job.title} at ${job.company} — RemoteWorks ID`,
+    description: `Apply for ${job.title} (${job.type}) at ${job.company}.`,
   };
 }
 
-export default function JobLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export default function JobDetailLayout({ children }: Props) {
+  return (
+    <section className="max-w-4xl mx-auto px-4 py-8">
+      {children}
+    </section>
+  );
 }
