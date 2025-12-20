@@ -1,36 +1,38 @@
-import { ButtonHTMLAttributes } from "react";
-
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+type ButtonProps = {
+  children: React.ReactNode;
   variant?: "primary" | "secondary";
+  href?: string;
+  onClick?: () => void;
+  type?: "button" | "submit";
 };
 
 export default function Button({
   children,
   variant = "primary",
-  className = "",
-  ...props
+  href,
+  onClick,
+  type = "button",
 }: ButtonProps) {
-  const baseStyle = `
-    inline-flex items-center justify-center
-    px-4 py-2 rounded-lg text-sm font-medium
-    transition
-    hover:opacity-90
-    active:scale-95
-    disabled:opacity-50
-    disabled:cursor-not-allowed
-    focus:outline-none focus:ring-2 focus:ring-blue-500
-  `;
+  const base =
+    "inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition";
 
-  const variantStyle =
+  const variantClass =
     variant === "primary"
-      ? "bg-blue-600 text-white"
-      : "bg-gray-200 text-gray-800";
+      ? "bg-black text-white hover:bg-gray-800"
+      : "border border-gray-300 text-gray-700 hover:bg-gray-100";
+
+  const className = `${base} ${variantClass}`;
+
+  if (href) {
+    return (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    );
+  }
 
   return (
-    <button
-      className={`${baseStyle} ${variantStyle} ${className}`}
-      {...props}
-    >
+    <button type={type} onClick={onClick} className={className}>
       {children}
     </button>
   );
