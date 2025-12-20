@@ -10,6 +10,7 @@ export default function SubmitJobPage() {
 
   const [priorityReview, setPriorityReview] = useState(false);
   const [highlighted, setHighlighted] = useState(false);
+  const [reviewType, setReviewType] = useState<"standard" | "priority">("standard");
 
   const router = useRouter();
 
@@ -54,6 +55,63 @@ export default function SubmitJobPage() {
             : "Semua lowongan akan ditinjau manual sebelum dipublikasikan."}
         </p>
       </section>
+
+      <section className="mt-8">
+  <h2 className="text-lg font-semibold mb-2">
+    Review & Visibility Options
+  </h2>
+  <p className="text-sm text-gray-500 mb-4">
+    Choose how your job listing will be reviewed and displayed.
+  </p>
+
+  <div className="grid gap-4 md:grid-cols-2">
+    {/* Standard */}
+    <button
+      type="button"
+      onClick={() => setReviewType("standard")}
+      className={`border rounded-xl p-4 text-left transition ${
+        reviewType === "standard"
+          ? "border-blue-600 bg-blue-50"
+          : "hover:border-gray-400"
+      }`}
+    >
+      <h3 className="font-semibold">Standard Review (Free)</h3>
+      <ul className="text-sm text-gray-600 mt-2 space-y-1">
+        <li>• Review within 3–5 business days</li>
+        <li>• Basic visibility</li>
+        <li>• Manual scam screening</li>
+      </ul>
+
+      <p className="text-xs text-gray-500 mt-3 italic">
+        Peninjauan standar tanpa biaya tambahan.
+      </p>
+    </button>
+
+    {/* Priority */}
+    <button
+      type="button"
+      onClick={() => setReviewType("priority")}
+      className={`border rounded-xl p-4 text-left transition ${
+        reviewType === "priority"
+          ? "border-purple-600 bg-purple-50"
+          : "hover:border-gray-400"
+      }`}
+    >
+      <h3 className="font-semibold">
+        Priority Review <span className="text-purple-600">(Recommended)</span>
+      </h3>
+      <ul className="text-sm text-gray-600 mt-2 space-y-1">
+        <li>• Reviewed within 24 hours</li>
+        <li>• Curated & Verified badge</li>
+        <li>• Higher listing priority</li>
+      </ul>
+
+      <p className="text-xs text-gray-500 mt-3 italic">
+        Cocok untuk perusahaan yang ingin visibilitas dan kepercayaan lebih tinggi.
+      </p>
+    </button>
+  </div>
+</section>
 
       {/* FORM */}
       <form onSubmit={handleSubmit} className="space-y-6">
