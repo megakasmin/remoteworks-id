@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
+import LanguageToggle from "@/components/LanguageToggle";
 
 type Language = "en" | "id";
 
@@ -20,24 +21,9 @@ export default function SubmitJobClient() {
   return (
     <section className="space-y-12">
       {/* Language Toggle */}
-      <div className="flex justify-end gap-2">
-        <button
-          onClick={() => setLang("en")}
-          className={`text-sm ${
-            lang === "en" ? "font-semibold underline" : "text-gray-400"
-          }`}
-        >
-          EN
-        </button>
-        <button
-          onClick={() => setLang("id")}
-          className={`text-sm ${
-            lang === "id" ? "font-semibold underline" : "text-gray-400"
-          }`}
-        >
-          ID
-        </button>
-      </div>
+<div className="flex justify-end">
+  <LanguageToggle language={lang} onChange={setLang} />
+</div>
 
       {/* COPY */}
       {lang === "en" ? (
@@ -141,10 +127,12 @@ export default function SubmitJobClient() {
         <Button type="submit">Submit for Review</Button>
       </form>
 
-      {/* Monetization Section */}
+{/* Optional Visibility & Review Options */}
 <section className="mt-16 border-t pt-10 space-y-8">
   <h2 className="text-2xl font-semibold">
-    Optional Visibility & Review Options
+    {lang === "en"
+      ? "Optional Visibility & Review Options"
+      : "Opsi Tambahan Visibilitas & Review"}
   </h2>
 
   {/* Priority Review */}
@@ -152,18 +140,33 @@ export default function SubmitJobClient() {
     <h3 className="text-lg font-semibold">Priority Review</h3>
 
     <p className="text-gray-700">
-      For employers who need faster review turnaround.
+      {lang === "en"
+        ? "For employers who need faster review turnaround."
+        : "Untuk perusahaan yang membutuhkan proses review lebih cepat."}
     </p>
 
     <ul className="list-disc list-inside text-sm text-gray-600">
-      <li>Faster manual review by our team</li>
-      <li>Same quality and verification standards</li>
-      <li>No guarantee of publication</li>
-      <li>Ideal for time-sensitive roles</li>
+      {lang === "en" ? (
+        <>
+          <li>Faster manual review by our team</li>
+          <li>Same quality and verification standards</li>
+          <li>No guarantee of publication</li>
+          <li>Ideal for time-sensitive roles</li>
+        </>
+      ) : (
+        <>
+          <li>Review manual lebih cepat oleh tim kami</li>
+          <li>Tetap melalui standar kualitas dan verifikasi</li>
+          <li>Tidak menjamin publikasi</li>
+          <li>Cocok untuk lowongan yang bersifat mendesak</li>
+        </>
+      )}
     </ul>
 
     <p className="text-xs text-gray-500">
-      Priority Review affects review speed, not editorial decisions.
+      {lang === "en"
+        ? "Priority Review affects review speed, not editorial decisions."
+        : "Priority Review hanya mempengaruhi kecepatan review, bukan keputusan publikasi."}
     </p>
   </div>
 
@@ -172,28 +175,44 @@ export default function SubmitJobClient() {
     <h3 className="text-lg font-semibold">Featured Listing</h3>
 
     <p className="text-gray-700">
-      Highlight your job to increase visibility.
+      {lang === "en"
+        ? "Highlight your job to increase visibility."
+        : "Tingkatkan visibilitas lowongan Anda."}
     </p>
 
     <ul className="list-disc list-inside text-sm text-gray-600">
-      <li>Featured placement on job listings</li>
-      <li>Higher visibility to relevant candidates</li>
-      <li>Available only for approved jobs</li>
-      <li>Limited availability</li>
+      {lang === "en" ? (
+        <>
+          <li>Featured placement on job listings</li>
+          <li>Higher visibility to relevant candidates</li>
+          <li>Available only for approved jobs</li>
+          <li>Limited availability</li>
+        </>
+      ) : (
+        <>
+          <li>Penempatan khusus di halaman lowongan</li>
+          <li>Lebih mudah ditemukan kandidat relevan</li>
+          <li>Hanya tersedia untuk lowongan yang lolos review</li>
+          <li>Slot terbatas</li>
+        </>
+      )}
     </ul>
 
     <p className="text-xs text-gray-500">
-      Featured listings must meet all verification standards.
+      {lang === "en"
+        ? "Featured listings must meet all verification standards."
+        : "Featured Listing tetap harus memenuhi seluruh standar verifikasi."}
     </p>
   </div>
 
   {/* Trust Disclaimer */}
   <div className="bg-gray-50 border rounded-xl p-4 text-sm text-gray-600">
-    RemoteWorks ID does not sell job approvals. All submissions are reviewed
-    manually. Monetization options apply only to review speed or listing
-    visibility.
+    {lang === "en"
+      ? "RemoteWorks ID does not sell job approvals. All submissions are reviewed manually. Monetization options apply only to review speed or listing visibility."
+      : "RemoteWorks ID tidak menjual persetujuan lowongan. Semua lowongan ditinjau secara manual. Opsi monetisasi hanya mempengaruhi kecepatan review atau visibilitas lowongan."}
   </div>
 </section>
+
 
     </section>
   );
