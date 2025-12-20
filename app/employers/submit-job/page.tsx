@@ -12,6 +12,7 @@ export default function SubmitJobPage() {
   const [highlighted, setHighlighted] = useState(false);
   const [reviewType, setReviewType] = useState<"standard" | "priority">("standard");
 
+
   const router = useRouter();
 
   function handleSubmit(e: React.FormEvent) {
