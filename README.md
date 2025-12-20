@@ -1,65 +1,86 @@
 # RemoteWorks ID
 
-RemoteWorks ID is a **curated remote & hybrid job platform** focused on tech, data, and digital roles.  
-The platform prioritizes **job quality, trust, and transparency**, helping job seekers discover legitimate opportunities without noise or scams.
+**Curated Remote & Hybrid Job Platform**  
+*Built with a trust-first approach for job seekers and employers.*
 
-> Built as a real product — not just a portfolio demo.
-
----
-
-## Live Demo
-
-🔗 https://remoteworks-id.vercel.app/
+Live: https://remoteworks-id.vercel.app
 
 ---
 
-## Key Features
+## Overview
 
-- **Curated Job Listings**  
-  Every job is manually reviewed before publication to ensure legitimacy and relevance.
+RemoteWorks ID is a curated job platform focused on **remote and hybrid opportunities**.  
+Unlike traditional job boards, every job listing goes through **manual review and trust checks** before being published.
 
-- **Verified Badge System**  
-  Jobs that pass internal checks are marked as *Verified* for user trust.
-
-- **Apply Redirect Flow (No Data Storage)**  
-  Applications are completed on the employer’s official website.  
-  RemoteWorks ID does **not collect or store applicant data**.
-
-- **Trust & Safety First**  
-  Clear policies on scam prevention, transparent disclaimers, and reporting channels.
-
-- **SEO-Optimized Pages**  
-  Dynamic metadata for job listings to support discoverability.
-
-- **Responsive & Accessible UI**  
-  Designed for desktop and mobile, with keyboard-accessible interactions.
+The platform is designed to:
+- Help job seekers find **safer, higher-quality job listings**
+- Help employers publish **credible and curated opportunities**
+- Reduce misleading or scam job postings through internal review
 
 ---
 
-## Product Philosophy
+## Product Principles
 
-RemoteWorks ID is intentionally **not** a traditional applicant tracking system.
+- **Curated, not crowded**  
+  Quality over quantity. No mass scraping.
 
-Instead, it operates as a **job discovery and trust layer**:
+- **Trust-first**  
+  Review internal sebelum publikasi.
 
-- We help users **find** opportunities
-- We help employers **gain visibility**
-- We do **not** interfere with the hiring process
+- **Clear separation of roles**  
+  - Job Seeker
+  - Employer
+  - Internal Review
 
-This approach keeps the platform:
-- Lightweight
-- Scalable
-- Legally safer
-- User-centric
+- **Monetization without harming trust**  
+  Paid options affect *speed & visibility*, not approval outcome.
 
 ---
 
-## Trust & Safety
+## For Job Seekers
 
-- No job listings requiring application fees
-- No unofficial communication channels (WhatsApp, Telegram, etc.)
-- No misleading income claims
-- Manual review for all job submissions
+- Manually reviewed job listings
+- Remote & hybrid roles only
+- Clear job details and company context
+- Reduced exposure to misleading postings
+
+Browse jobs: `/jobs`
+
+---
+
+## For Employers
+
+Employers can submit job listings through a dedicated flow:
+
+Submit job: `/employers/submit-job`
+
+### Review Options
+- **Standard Review (Free)**  
+  - Reviewed within 3–5 business days  
+  - Basic visibility
+
+- **Priority Review (Optional)**  
+  - Reviewed within 24 hours  
+  - Higher placement & curated badge  
+  - Does not guarantee approval
+
+> Priority Review improves speed and visibility, not trust decisions.
+
+---
+
+## Trust, Safety & Verification
+
+RemoteWorks ID separates **trust concepts clearly**:
+
+- **Trust & Safety**  
+  Platform-wide internal policies and checks  
+
+- **Verification**  
+  Optional badge granted after additional internal checks  
+
+This separation prevents confusion and maintains credibility.
+
+---
 
 ## Tech Stack
 
@@ -68,33 +89,47 @@ This approach keeps the platform:
 - **Styling**: Tailwind CSS
 - **Deployment**: Vercel
 - **Architecture**:
-  - Server Components for data & routing
-  - Client Components for UI interactions
+  - Server Components (SEO, routing)
+  - Client Components (interactive UI)
   - Clean separation of concerns
 
 ---
 
-## Roadmap
+## Project Structure (Simplified)
 
-- Employer submission flow (manual review)
-- Job categories & filters
-- Saved jobs (local-only)
-- Analytics for curated listings
-- International remote listings
+
+---
+
+## Status
+
+- ✅ MVP completed
+- ✅ Employer monetization flow implemented
+- ✅ Trust & safety architecture defined
+- ✅ Ready for iteration (backend, payment, moderation tools)
+
+---
+
+## Notes
+
+This project is intentionally built without:
+- User authentication (yet)
+- Payment processing (yet)
+- Automated scraping
+
+The focus is **product thinking, UX clarity, and trust-driven architecture**.
 
 ---
 
 ## Author
 
 Built by **Mega Iriantika Kasmin**  
-Focused on building meaningful digital products with clean UX and thoughtful architecture.
+As a learning-driven, product-oriented web project.
 
 ---
 
-## Notes
+## Feedback
 
-This project was built to demonstrate:
-- Real-world product thinking
-- Clean Next.js App Router architecture
-- UX decisions aligned with trust & safety
-- Scalable foundations for future growth
+This project is open for iteration and improvement.  
+Feedback, ideas, and collaboration are welcome.
+
+
