@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -44,6 +45,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-white text-gray-900">
         {children}
+        <Footer/>
       </body>
     </html>
   );
