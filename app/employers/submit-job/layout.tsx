@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Post a Job",
-  description:
-    "Submit a curated remote or hybrid job listing for review on RemoteWorks ID.",
-};
+export default function SubmitJobLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="max-w-3xl mx-auto py-12">
+      {children}
+    </section>
+  );
+}
