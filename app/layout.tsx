@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { LanguageProvider } from "@/components/language/LanguageContext";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 
@@ -45,9 +46,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-white text-gray-900">
+        <LanguageProvider>
         <Header/>
-        <main>{children}</main>
+        <main style={{paddingTop: "80px" }}>{children}</main>
         <Footer/>
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LanguageToggle from "@/components/LanguageToggle";
+import { useLanguage } from "@/components/language/LanguageContext";
 
 export default function Header() {
   const pathname = usePathname();
+  const { language, setLanguage } = useLanguage();
 
-  // Optional: pages with dark background
   const darkPages = ["/"];
   const isDark = darkPages.includes(pathname);
 
@@ -16,24 +17,21 @@ export default function Header() {
     <header className="absolute top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex items-center justify-between h-20">
+          
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <div className="h-16 flex items-center">
-<Image
-  src="/test3.png"
-  alt="RemoteWorks ID"
-  width={100}
-  height={100}
-  priority
-/>
-<span className="font-semibold text-xl leading-none">
+          <Link href="/" className="flex items-center gap-0">
+            <Image
+              src="/test3.png"
+              alt="RemoteWorks ID"
+              width={100}
+              height={100}
+              priority
+            />
+<span className="font-semibold text-xl leading-none -ml-0.5">
   RemoteWorks ID
 </span>
 
-            </div>
           </Link>
-
-          
 
           {/* Menu + Language */}
           <div className="flex items-center gap-6">
@@ -42,26 +40,24 @@ export default function Header() {
                 isDark ? "text-white" : "text-gray-800"
               }`}
             >
-              <Link href="/jobs" className="hover:opacity-80">
-                Jobs
+              <Link href="/jobs">
+                {language === "en" ? "Jobs" : "Lowongan"}
               </Link>
-              <Link
-                href="/employers/submit-job"
-                className="hover:opacity-80"
-              >
-                Post a Job
+              <Link href="/employers/submit-job">
+                {language === "en" ? "Post a Job" : "Pasang Lowongan"}
               </Link>
-              <Link href="/verify" className="hover:opacity-80">
-                Verify
+              <Link href="/verify">
+                {language === "en" ? "Verify" : "Verifikasi"}
+              </Link>
+              <Link href="/trust-and-safety">
+                {language === "en" ? "Trust & Safety" : "Kepercayaan & Keamanan"}
               </Link>
             </nav>
 
-            <div className={isDark ? "text-white" : "text-gray-800"}>
-  <LanguageToggle language={"id"} onChange={function (lang: "id" | "en"): void {
-                              throw new Error("Function not implemented.");
-                          } } />
-</div>
-
+            <LanguageToggle
+              language={language}
+              onChange={setLanguage}
+            />
           </div>
         </div>
       </div>
