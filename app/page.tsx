@@ -22,13 +22,13 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/jobs"
-            className="px-8 py-3 rounded-lg bg-black text-white hover:bg-gray-800 transition"
+            className="px-8 py-3 rounded-lg bg-white text-black hover:bg-gray-800 transition"
           >
             {t.hero.ctaJobs}
           </Link>
           <Link
             href="/employers/submit-job"
-            className="px-8 py-3 rounded-lg bg-black text-white hover:bg-gray-800 transition"
+            className="px-8 py-3 rounded-lg bg-white text-black hover:bg-gray-800 transition"
           >
             {t.hero.ctaPost}
           </Link>
