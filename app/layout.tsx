@@ -37,21 +37,25 @@ export const metadata: Metadata = {
     images: ["/og.png"],
   },
 };
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen flex flex-col">
+    <html lang="en" className="h-full">
+      <body className="h-full min-h-screen flex flex-col">
         <LanguageProvider>
-        <Header/>
-        <main className="flex-1">{children}</main>
-        <Footer/>
+          <Header />
+          
+          <main className="flex-1">
+            {children}
+          </main>
+
+          <Footer />
         </LanguageProvider>
       </body>
     </html>
   );
 }
+

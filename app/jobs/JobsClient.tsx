@@ -24,7 +24,14 @@ export default function JobsClient({ jobs }: { jobs: JobDetail[] }) {
   });
 
   return (
-    <main className="max-w-6xl mx-auto px-6 pt-8 pb-20 space-y-6">
+  <main
+  className="
+    max-w-6xl mx-auto px-6 pt-8 pb-32 space-y-6
+    min-h-[calc(100vh-80px)]
+    bg-transparent
+  "
+>
+
       {/* Search */}
       <input
         placeholder="Search jobs, company, or location..."

@@ -33,7 +33,7 @@ export default function Footer() {
   const t = content[language];
 
   return (
-    <footer className="border-t mt-20 bg-white dark:bg-black">
+    <footer className="border-t bg-white dark:bg-black">
       {/* TOP */}
       <div className="max-w-6xl mx-auto px-6 py-10 text-center space-y-2">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
