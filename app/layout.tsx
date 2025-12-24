@@ -45,10 +45,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white text-gray-900">
+      <body className="min-h-screen flex flex-col">
         <LanguageProvider>
         <Header/>
-        <main style={{paddingTop: "80px" }}>{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer/>
         </LanguageProvider>
       </body>

@@ -30,6 +30,7 @@ export const jobs: JobDetail[] = [
     applyUrl: "https://www.linkedin.com/in/mega-iriantika-kasmin",
     curated: true,
   },
+  
 ];
 
 export function getJobs() {

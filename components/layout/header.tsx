@@ -11,10 +11,10 @@ export default function Header() {
   const { language, setLanguage } = useLanguage();
 
   const darkPages = ["/"];
-  const isDark = darkPages.includes(pathname);
+  const isDark = true;
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50">
+    <header className={`sticky top-0 z-50 ${isDark ? "bg-black" : "bg-white"}`}>
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex items-center justify-between h-20">
           
@@ -36,21 +36,18 @@ export default function Header() {
           {/* Menu + Language */}
           <div className="flex items-center gap-6">
             <nav
-              className={`flex items-center gap-6 text-sm font-medium ${
-                isDark ? "text-white" : "text-gray-800"
-              }`}
-            >
-              <Link href="/jobs">
-                {language === "en" ? "Jobs" : "Lowongan"}
-              </Link>
-              <Link href="/employers/submit-job">
-                {language === "en" ? "Post a Job" : "Pasang Lowongan"}
-              </Link>
+              className="flex items-center gap-6 text-sm font-medium text-white">
               <Link href="/verify">
                 {language === "en" ? "Verify" : "Verifikasi"}
               </Link>
               <Link href="/trust-and-safety">
                 {language === "en" ? "Trust & Safety" : "Kepercayaan & Keamanan"}
+              </Link>
+                            <Link href="/about">
+                {language === "en" ? "About Us" : "Tentang Kami"}
+              </Link>
+              <Link href="/contact">
+                {language === "en" ? "Contact Us" : "Kontak Kami"}
               </Link>
             </nav>
 

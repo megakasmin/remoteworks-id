@@ -12,15 +12,25 @@ export default function JobsClient({ jobs }: { jobs: JobDetail[] }) {
   );
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-16 space-y-6">
-      <input
-        placeholder="Search jobs..."
-        className="w-full border rounded-lg p-3"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+<main className="max-w-6xl mx-auto px-4 pt-16 pb-20 space-y-10">
+<div className="mb-8">
+<input className="
+    w-full
+    rounded-lg
+    border border-gray-300
+    p-4
+    bg-black/20
+    text-white
+    placeholder-gray-400
+    focus:outline-none
+    focus:ring-2
+    focus:ring-primary/30
+  "
+/>
+</div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+
+<div className="grid md:grid-cols-2 gap-6 mt-4">
         {filteredJobs.map((job) => (
           <Card key={job.slug} {...job} />
         ))}

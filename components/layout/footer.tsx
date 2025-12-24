@@ -38,48 +38,25 @@ terms: "Syarat dan Ketentuan",
   const t = content[language];
 
   return (
-    <footer className="border-t mt-10 bg-gray">
-      <div className="max-w-6xl mx-auto px-6 py-14 flex flex-col md:flex-row items-start md:items-center justify-center gap-10">
+<footer className="border-t bg-white">
+  <div className="max-w-6xl mx-auto px-6 py-4">
 
-        {/* LEFT: BRAND */}
-        <div className="max-w-md space-y-2">
-          <h3 className="text-lg font-semibold text-gray-600 text-center">
-            RemoteWorks ID
-          </h3>
-          <p className="text-sm text-gray-500 font-medium text-center">
-            {t.tagline}
-          </p>
-          <p className="text-sm text-gray-700 leading-relaxed text-center">
-            {t.description}
-          </p>
-        </div>
+    <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-gray-500">
+      <span>© 2025 RemoteWorks ID</span>
 
+      <div className="flex items-center gap-2">
+        <Link href="/privacy" className="hover:text-gray-900">
+          Privacy Policy
+        </Link>
+        <span>·</span>
+        <Link href="/terms" className="hover:text-gray-900">
+          Terms of Service
+        </Link>
       </div>
+    </div>
 
- {/* BOTTOM LEGAL */}
-      <div className="border-t py-6">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+  </div>
+</footer>
 
-          <span>{t.copyright}</span>
-
-          <div className="flex items-center gap-2">
-            <Link
-              href="/privacy"
-              className="hover:text-black transition"
-            >
-              {t.legal.privacy}
-            </Link>
-            <span>·</span>
-            <Link
-              href="/terms"
-              className="hover:text-black transition"
-            >
-              {t.legal.terms}
-            </Link>
-          </div>
-
-        </div>
-      </div>
-    </footer>
   );
 }
