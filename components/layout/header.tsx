@@ -25,15 +25,15 @@ export default function Header() {
   <div className="mx-auto max-w-7xl px-6">
     <div className="flex items-center justify-between h-16">
       
-      <Link href="/" className="flex items-center gap-2">
+      <Link href="/" className="flex items-center">
         <Image
-          src="/test4.png"
+          src="/test8.png"
           alt="RemoteWorks ID"
-          width={80}
-          height={80}
+          width={90}
+          height={90}
           priority
         />
-        <span className="font-semibold text-lg leading-none">
+        <span className="font-semibold text-lg leading-none -ml-0.5">
           RemoteWorks ID
         </span>
       </Link>

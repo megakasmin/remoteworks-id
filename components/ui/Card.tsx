@@ -18,7 +18,7 @@ export default function Card({
 }: CardProps) {
   const typeStyle =
     type === "Remote"
-      ? "bg-primary-soft text-primary"
+      ? "bg-gray-100 text-gray-700"
       : "bg-purple-100 text-purple-700";
 
   return (
@@ -56,7 +56,7 @@ export default function Card({
             {/* Verified Badge */}
             {verified && (
               <span className="text-xs px-2 py-1 rounded-md bg-green-100 text-green-700 font-medium">
-                ✔ Verified
+                Verified
               </span>
             )}
           </div>

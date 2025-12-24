@@ -25,8 +25,8 @@ export default function JobDetailClient({ job }: { job: JobDetail }) {
         <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded">
           {job.type}
         </span>
-        
-          {job.curated && (
+
+          {job.verified && (
     <Link
       href="/verify"
       className="bg-green-100 text-green-700 px-3 py-1 rounded hover:underline"
