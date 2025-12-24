@@ -24,25 +24,25 @@ export default function Card({
   return (
     <Link href={`/jobs/${slug}`} className="group">
       <div
-        className="
-          h-full
-          rounded-lg
-          border border-gray-100
-          bg-white
-          p-5
-          shadow-card
-          transition-all duration-200
-          hover:-translate-y-0.5
-          hover:shadow-lg
-        "
+ className="
+    h-full
+    rounded-lg
+    border border-gray-200/50 dark:border-gray-800
+    bg-white dark:bg-[var(--surface)]
+    p-5
+    shadow-card
+    transition-all
+    hover:-translate-y-0.5
+    hover:shadow-lg
+  "
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-base font-semibold text-gray-900 leading-snug group-hover:text-primary transition">
+<h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
               {title}
             </h3>
-            <p className="mt-1 text-sm text-gray-500">{company}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{company}</p>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">

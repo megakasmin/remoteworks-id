@@ -14,19 +14,21 @@ export default function JobsClient({ jobs }: { jobs: JobDetail[] }) {
   return (
 <main className="max-w-6xl mx-auto px-4 pt-16 pb-20 space-y-10">
 <div className="mb-8">
-<input className="
+<input
+  className="
     w-full
     rounded-lg
-    border border-gray-300
+    border border-gray-300 dark:border-gray-800
+    bg-white dark:bg-[var(--surface)]
     p-4
-    bg-black/20
-    text-white
+    text-gray-900 dark:text-gray-100
     placeholder-gray-400
     focus:outline-none
     focus:ring-2
     focus:ring-primary/30
   "
 />
+
 </div>
 
 

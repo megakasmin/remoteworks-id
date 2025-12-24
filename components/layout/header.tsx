@@ -14,24 +14,29 @@ export default function Header() {
   const isDark = true;
 
   return (
-    <header className={`sticky top-0 z-50 ${isDark ? "bg-black" : "bg-white"}`}>
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex items-center justify-between h-20">
-          
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-0">
-            <Image
-              src="/test3.png"
-              alt="RemoteWorks ID"
-              width={100}
-              height={100}
-              priority
-            />
-<span className="font-semibold text-xl leading-none -ml-0.5">
-  RemoteWorks ID
-</span>
-
-          </Link>
+<header
+  className="
+    sticky top-0 z-50
+    bg-white/80 dark:bg-black/60
+    backdrop-blur
+    border-b border-gray-200/50 dark:border-gray-800/50
+  "
+>
+  <div className="mx-auto max-w-7xl px-6">
+    <div className="flex items-center justify-between h-16">
+      
+      <Link href="/" className="flex items-center gap-2">
+        <Image
+          src="/test4.png"
+          alt="RemoteWorks ID"
+          width={80}
+          height={80}
+          priority
+        />
+        <span className="font-semibold text-lg leading-none">
+          RemoteWorks ID
+        </span>
+      </Link>
 
           {/* Menu + Language */}
           <div className="flex items-center gap-6">
