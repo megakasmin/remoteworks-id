@@ -6,16 +6,28 @@ import type { JobDetail } from "@/lib/jobs";
 
 export default function JobsClient({ jobs }: { jobs: JobDetail[] }) {
   const [query, setQuery] = useState("");
+  const [typeFilter, setTypeFilter] =
+    useState<"All" | "Remote" | "Hybrid">("All");
 
-  const filteredJobs = jobs.filter((job) =>
-    job.title.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredJobs = jobs.filter((job) => {
+    const search = query.toLowerCase();
+
+    const matchQuery =
+      job.title.toLowerCase().includes(search) ||
+      job.company.toLowerCase().includes(search) ||
+      job.location.toLowerCase().includes(search);
+
+    const matchType =
+      typeFilter === "All" ? true : job.type === typeFilter;
+
+    return matchQuery && matchType;
+  });
 
   return (
     <main className="max-w-6xl mx-auto px-6 pt-8 pb-20 space-y-6">
       {/* Search */}
       <input
-        placeholder="Search jobs..."
+        placeholder="Search jobs, company, or location..."
         className="
           w-full border border-gray-200 dark:border-gray-800
           rounded-lg p-3
@@ -27,6 +39,32 @@ export default function JobsClient({ jobs }: { jobs: JobDetail[] }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
+
+      {/* Filter */}
+      <div className="flex items-center gap-2">
+        {["All", "Remote", "Hybrid"].map((type) => {
+          const isActive = typeFilter === type;
+
+          return (
+            <button
+              key={type}
+              onClick={() =>
+                setTypeFilter(type as "All" | "Remote" | "Hybrid")
+              }
+              className={`
+                px-4 py-1.5 rounded-full text-sm font-medium transition
+                ${
+                  isActive
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                }
+              `}
+            >
+              {type}
+            </button>
+          );
+        })}
+      </div>
 
       {/* Jobs Grid / Empty State */}
       {filteredJobs.length > 0 ? (
@@ -49,7 +87,7 @@ export default function JobsClient({ jobs }: { jobs: JobDetail[] }) {
             No jobs found
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Try adjusting your search or check back later.
+            Try searching by job title, company, or location.
           </p>
         </div>
       )}
