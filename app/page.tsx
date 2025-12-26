@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <main className="max-w-6xl mx-auto px-6 pt-32 pb-24">
       {/* HERO */}
-      <section className="text-center mb-10">
+      <section className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           {t.hero.title}
         </h1>
@@ -57,7 +57,7 @@ export default function HomePage() {
       
 
 {/* SUPPORTING TRUST POINTS */}
-<section className="mt-12 mb-24">
+<section className="mt-20 mb-24">
   <ul
     className="
       grid
