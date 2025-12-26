@@ -5,7 +5,7 @@ export const landingContent = {
       desc:
         "Manually curated job listings to reduce scams and misleading opportunities, so you can apply with confidence.",
       ctaJobs: "Browse Verified jobs",
-      ctaPost: "Post a Job",
+      ctaPost: "Pelajari Proses Verifikasi Kami",
     },
 
     trustBadges: [
@@ -57,6 +57,9 @@ verification: {
   ],
 },
 
+// EN
+humanReviewNote: 
+  "Every job on RemoteWorks ID is reviewed by a real human — not automatically approved — to help reduce scams and misleading listings.",
 
 
 seekers: {
@@ -143,6 +146,10 @@ verification: {
     },
   ],
 },
+
+// ID
+humanReviewNote:
+  "Setiap lowongan di RemoteWorks ID ditinjau oleh manusia secara langsung — bukan disetujui otomatis — untuk mengurangi risiko penipuan dan lowongan menyesatkan.",
 
 
 seekers: {

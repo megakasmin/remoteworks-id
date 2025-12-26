@@ -19,33 +19,40 @@ export default function HomePage() {
           {t.hero.desc}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+<div className="flex flex-col sm:flex-row gap-4 justify-center">
+  {/* PRIMARY CTA */}
 <Link
   href="/jobs"
   className="
     px-8 py-3 rounded-lg
-    bg-black text-white
-    hover:bg-gray-800
+    bg-white text-gray-900
+    shadow-sm
+    hover:shadow-md
     transition
+    font-medium
   "
 >
+  {t.hero.ctaJobs}
+</Link>
 
-            {t.hero.ctaJobs}
-          </Link>
+
+  {/* SECONDARY CTA */}
 <Link
-  href="/employers/submit-job"
+  href="/trust-and-safety"
   className="
     px-8 py-3 rounded-lg
     border border-gray-300
     text-gray-700
-    hover:bg-gray-100
+    hover:bg-gray-50
     transition
+    font-medium
   "
 >
+  {t.hero.ctaPost}
+</Link>
 
-            {t.hero.ctaPost}
-          </Link>
-        </div>
+</div>
+
       </section>
       
 
@@ -53,22 +60,26 @@ export default function HomePage() {
 <section className="mt-12 mb-24">
   <ul
     className="
-      grid gap-6
+      grid
+      gap-x-12 gap-y-8
       sm:grid-cols-3
       text-sm
-      text-gray-600
     "
   >
     {t.trustBadges.map((item, idx) => (
       <li key={idx}>
-        <strong className="block text-gray-900 mb-1">
+        <h3 className="text-white font-medium mb-2">
           {item.title}
-        </strong>
-        <span>{item.desc}</span>
+        </h3>
+        <p className="text-gray-500 leading-relaxed">
+          {item.desc}
+        </p>
       </li>
     ))}
   </ul>
 </section>
+
+
 
 {/* WHY REMOTEWORKS */}
 <section className="max-w-3xl mx-auto text-center mb-24">
@@ -100,20 +111,23 @@ export default function HomePage() {
         </p>
       </div>
     ))}
-    <Link
-  href="/trust-and-safety"
-  className="inline-block mt-4 text-sm font-medium text-blue-600 hover:underline"
->
-  Learn more about Trust & Safety →
-</Link>
-
   </div>
+<div className="text-center mt-6">
+  <Link
+    href="/trust-and-safety"
+    className="text-sm font-medium text-blue-600 hover:underline"
+  >
+    Learn more about Trust & Safety →
+  </Link>
+</div>
 </section>
 
-<p className="text-xs text-gray-500 text-center max-w-3xl mx-auto mt-8">
-  We do not auto-approve job listings. All submissions go through a human review
-  process to reduce scams and misleading opportunities.
-</p>
+{/* HUMAN REVIEW NOTE */}
+<section className="mt-12 mb-32 border-t pt-8">
+  <p className="text-xs text-gray-500 text-center max-w-3xl mx-auto">
+    {t.humanReviewNote}
+  </p>
+</section>
 
 
       {/* VALUE SECTIONS */}
