@@ -11,62 +11,150 @@ export default function HomePage() {
   return (
     <main className="max-w-6xl mx-auto px-6 pt-32 pb-24">
       {/* HERO */}
-      <section className="text-center mb-20">
+      <section className="text-center mb-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           {t.hero.title}
         </h1>
-        <p className="text-gray-500 max-w-3xl mx-auto mb-10">
+        <p className="text-gray-600 max-w-3xl mx-auto mb-10">
           {t.hero.desc}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/jobs"
-            className="px-8 py-3 rounded-lg bg-white text-black hover:bg-gray-800 transition"
-          >
+<Link
+  href="/jobs"
+  className="
+    px-8 py-3 rounded-lg
+    bg-black text-white
+    hover:bg-gray-800
+    transition
+  "
+>
+
             {t.hero.ctaJobs}
           </Link>
-          <Link
-            href="/employers/submit-job"
-            className="px-8 py-3 rounded-lg bg-white text-black hover:bg-gray-800 transition"
-          >
+<Link
+  href="/employers/submit-job"
+  className="
+    px-8 py-3 rounded-lg
+    border border-gray-300
+    text-gray-700
+    hover:bg-gray-100
+    transition
+  "
+>
+
             {t.hero.ctaPost}
           </Link>
         </div>
       </section>
+      
 
-      {/* TRUST BADGES */}
-      <section className="grid sm:grid-cols-3 gap-6 mb-20">
-        {t.trustBadges.map((item, idx) => (
-          <div key={idx} className="border rounded-xl p-6 text-center">
-            <h3 className="font-semibold mb-2">{item.title}</h3>
-            <p className="text-sm text-gray-500">{item.desc}</p>
-          </div>
-        ))}
-      </section>
+{/* SUPPORTING TRUST POINTS */}
+<section className="mt-12 mb-24">
+  <ul
+    className="
+      grid gap-6
+      sm:grid-cols-3
+      text-sm
+      text-gray-600
+    "
+  >
+    {t.trustBadges.map((item, idx) => (
+      <li key={idx}>
+        <strong className="block text-gray-900 mb-1">
+          {item.title}
+        </strong>
+        <span>{item.desc}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+{/* WHY REMOTEWORKS */}
+<section className="max-w-3xl mx-auto text-center mb-24">
+  <h2 className="text-2xl font-semibold mb-4">
+    {t.why.title}
+  </h2>
+  <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+    {t.why.desc}
+  </p>
+</section>
+
+{/* VERIFICATION PROCESS */}
+<section className="mb-24">
+  <h2 className="text-2xl font-semibold text-center mb-12">
+    {t.verification.title}
+  </h2>
+
+  <div className="grid md:grid-cols-4 gap-6">
+    {t.verification.steps.map((step, idx) => (
+      <div
+        key={idx}
+        className="rounded-xl p-6 bg-gray-50 dark:bg-gray-900"
+      >
+        <div className="text-sm font-semibold mb-2">
+          {idx + 1}. {step.title}
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-300">
+          {step.desc}
+        </p>
+      </div>
+    ))}
+    <Link
+  href="/trust-and-safety"
+  className="inline-block mt-4 text-sm font-medium text-blue-600 hover:underline"
+>
+  Learn more about Trust & Safety →
+</Link>
+
+  </div>
+</section>
+
+<p className="text-xs text-gray-500 text-center max-w-3xl mx-auto mt-8">
+  We do not auto-approve job listings. All submissions go through a human review
+  process to reduce scams and misleading opportunities.
+</p>
+
 
       {/* VALUE SECTIONS */}
       <section className="grid md:grid-cols-2 gap-10 mb-20">
-        <div className="border rounded-xl p-6">
+<div className="rounded-xl p-6 bg-gray-50 dark:bg-gray-900">
           <h2 className="text-xl font-semibold mb-4">
             {t.seekers.title}
           </h2>
-          <ul className="space-y-2 text-sm text-gray-600">
+<ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
             {t.seekers.points.map((p, i) => (
               <li key={i}>• {p}</li>
             ))}
           </ul>
+
+<Link
+  href="/jobs"
+  className="inline-block mt-4 text-sm font-medium text-blue-600 hover:underline"
+>
+  Browse verified jobs →
+</Link>
+
         </div>
 
-        <div className="border rounded-xl p-6">
+<div className="rounded-xl p-6 bg-gray-50 dark:bg-gray-900">
           <h2 className="text-xl font-semibold mb-4">
             {t.employers.title}
           </h2>
-          <ul className="space-y-2 text-sm text-gray-600">
+<ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
             {t.employers.points.map((p, i) => (
               <li key={i}>• {p}</li>
             ))}
           </ul>
+
+<Link
+  href="/employers/submit-job"
+  className="inline-block mt-4 text-sm font-medium text-blue-600 hover:underline"
+>
+  Submit a job →
+</Link>
+
+
         </div>
       </section>
 
