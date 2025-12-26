@@ -1,24 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import LanguageToggle from "@/components/LanguageToggle";
+import { useLanguage } from "@/components/language/LanguageContext";
 
 export default function TrustSafetyClient({
-  en,
-  id,
+  content,
 }: {
-  en: React.ReactNode;
-  id: React.ReactNode;
+  content: {
+    en: React.ReactNode;
+    id: React.ReactNode;
+  };
 }) {
-  const [lang, setLang] = useState<"en" | "id">("en");
+  const { language } = useLanguage();
 
-  return (
-    <>
-      <div className="flex justify-end mb-8">
-        <LanguageToggle language={lang} onChange={setLang} />
-      </div>
-
-      {lang === "en" ? en : id}
-    </>
-  );
+  return <>{content[language]}</>;
 }
