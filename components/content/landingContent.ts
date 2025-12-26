@@ -5,7 +5,7 @@ export const landingContent = {
       desc:
         "Manually curated job listings to reduce scams and misleading opportunities, so you can apply with confidence.",
       ctaJobs: "Browse Verified jobs",
-      ctaPost: "Pelajari Proses Verifikasi Kami",
+      ctaPost: "How We Verify Jobs",
     },
 
     trustBadges: [
