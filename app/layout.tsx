@@ -48,7 +48,7 @@ export default function RootLayout({
         <LanguageProvider>
           <Header />
           
-          <main className="flex-1">
+          <main className="pt-20">
             {children}
           </main>
 
