@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <main className="max-w-6xl mx-auto px-6 pt-32 pb-24">
       {/* HERO */}
-<section className="pt-20 pb-16 text-center">
+<section className="pt-20 pb-16 text-center justify-center">
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           {t.hero.title}
@@ -58,7 +58,7 @@ export default function HomePage() {
       
 
 {/* SUPPORTING TRUST POINTS */}
-<section className="pt-16 pb-24">
+<section className="pt-16 pb-24 justify-center">
 
   <ul
     className="
