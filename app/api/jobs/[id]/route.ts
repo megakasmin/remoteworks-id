@@ -1,14 +1,14 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { findJobById } from "@/lib/repositories/job.repository";
 
 export async function GET(
-  _req: Request,
-  { params }: { params: { id?: string } }
+  _req: NextRequest,
+  context: { params: { id: string } }
 ) {
   try {
-    const id = params?.id;
+    const { id } = context.params;
 
-    if (!id || typeof id !== "string") {
+    if (!id) {
       return NextResponse.json(
         { message: "Invalid job id" },
         { status: 400 }
