@@ -1,12 +1,18 @@
-import { prisma } from "@/lib/prisma";
-import type { JobListQuery } from "@/lib/validation/job.query.schema";
+import { PrismaClient } from "@prisma/client";
 
-export async function findJobs(query: JobListQuery) {
-  const { limit, page, remote, employmentType } = query;
+const prisma = new PrismaClient();
 
-  const where = {
-    ...(employmentType && { employmentType }),
-  };
+export async function findJobs(params: {
+  page: number;
+  limit: number;
+  employmentType?: string;
+}) {
+  const { page, limit, employmentType } = params;
+
+  const where: any = {};
+  if (employmentType) {
+    where.employmentType = employmentType;
+  }
 
   const [items, total] = await Promise.all([
     prisma.job.findMany({
@@ -18,15 +24,7 @@ export async function findJobs(query: JobListQuery) {
     prisma.job.count({ where }),
   ]);
 
-  return {
-    items,
-    meta: {
-      total,
-      page,
-      limit,
-      totalPages: Math.ceil(total / limit),
-    },
-  };
+  return { items, total };
 }
 
 export async function findJobById(id: string) {
@@ -34,4 +32,3 @@ export async function findJobById(id: string) {
     where: { id },
   });
 }
-
