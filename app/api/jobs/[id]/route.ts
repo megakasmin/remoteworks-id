@@ -3,12 +3,12 @@ import { findJobById } from "@/lib/repositories/job.repository";
 
 export async function GET(
   _req: NextRequest,
-  context: { params: { id: string } }
+  context: any
 ) {
   try {
-    const { id } = context.params;
+    const id = context?.params?.id;
 
-    if (!id) {
+    if (!id || typeof id !== "string") {
       return NextResponse.json(
         { message: "Invalid job id" },
         { status: 400 }
