@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { findJobById } from "@/lib/repositories/job.repository";
-import { ok, notFound, serverError } from "@/lib/http/response";
+import { badRequest, created, serverError } from "@/lib/http/response";
 
 export async function GET(
   _req: NextRequest,
@@ -10,10 +10,10 @@ export async function GET(
     const job = await findJobById(params.id);
 
     if (!job) {
-      return notFound("Job not found");
+      return badRequest("Job not found");
     }
 
-    return ok(job);
+    return created(job);
   } catch (e) {
     return serverError(e);
   }
