@@ -1,31 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { findJobById } from "@/lib/repositories/job.repository";
-
-type Params = {
-  params: Promise<{ id: string }>;
-};
+import { ok, notFound, serverError } from "@/lib/http/response";
 
 export async function GET(
   _req: NextRequest,
-  { params }: Params
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await params; // ✅ WAJIB await
+  try {
+    const job = await findJobById(params.id);
 
-  if (!id) {
-    return NextResponse.json(
-      { message: "Job ID is required" },
-      { status: 400 }
-    );
+    if (!job) {
+      return notFound("Job not found");
+    }
+
+    return ok(job);
+  } catch (e) {
+    return serverError(e);
   }
-
-  const job = await findJobById(id);
-
-  if (!job) {
-    return NextResponse.json(
-      { message: "Job not found" },
-      { status: 404 }
-    );
-  }
-
-  return NextResponse.json(job);
 }

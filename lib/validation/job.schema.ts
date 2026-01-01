@@ -1,9 +1,11 @@
 import { z } from "zod";
 
-export const jobSchema = z.object({
+export const jobCreateSchema = z.object({
   title: z.string().min(3),
   companyName: z.string().min(2),
-  location: z.string(),
+  location: z.string().min(2),
   employmentType: z.enum(["FULL_TIME", "PART_TIME", "CONTRACT"]),
   isRemote: z.boolean(),
+  description: z.string().min(10),
+  applyUrl: z.string().url(),
 });

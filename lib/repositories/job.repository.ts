@@ -1,18 +1,42 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 
-const prisma = new PrismaClient();
+type FindJobsParams = {
+  page: number;
+  limit: number;
+  type?: Prisma.JobWhereInput["type"];
+};
 
+/* ======================
+   CREATE JOB
+====================== */
+export async function createJob(data: {
+  title: string;
+  company: string;
+  location: string;
+  type: string;
+  isRemote: boolean;
+  description: string;
+  applyUrl: string;
+}) {
+  return prisma.job.create({
+    data,
+  });
+}
+
+/* ======================
+   FIND JOB LIST
+====================== */
 export async function findJobs(params: {
   page: number;
   limit: number;
-  employmentType?: string;
+  type?: string;
 }) {
-  const { page, limit, employmentType } = params;
+  const { page, limit, type } = params;
 
-  const where: any = {};
-  if (employmentType) {
-    where.employmentType = employmentType;
-  }
+  const where = {
+    ...(type && { type }),
+  };
 
   const [items, total] = await Promise.all([
     prisma.job.findMany({
@@ -24,11 +48,23 @@ export async function findJobs(params: {
     prisma.job.count({ where }),
   ]);
 
-  return { items, total };
+  return {
+    items,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    },
+  };
 }
 
+/* ======================
+   FIND JOB BY ID
+====================== */
 export async function findJobById(id: string) {
   return prisma.job.findUnique({
     where: { id },
   });
 }
+

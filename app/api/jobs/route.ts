@@ -1,33 +1,31 @@
-import { NextResponse } from "next/server";
-import { jobListQuerySchema } from "@/lib/validation/job.query.schema";
-import { findJobs } from "@/lib/repositories/job.repository";
-import { ZodError } from "zod";
+import { NextRequest } from "next/server";
+import { createJob, findJobs } from "@/lib/repositories/job.repository";
+import { jobCreateSchema } from "@/lib/validation/job.schema";
+import { badRequest, created, serverError } from "@/lib/http/response";
 
-export async function GET(req: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
-    const query = jobListQuerySchema.parse(
-      Object.fromEntries(searchParams)
-    );
+    const body = await req.json();
+    const parsed = jobCreateSchema.safeParse(body);
 
-    const result = await findJobs(query);
+if (!parsed.success) {
+  return badRequest(parsed.error.flatten());
+}
 
-    return NextResponse.json(result);
-  } catch (err) {
-    if (err instanceof ZodError) {
-      return NextResponse.json(
-        {
-          message: "Invalid query parameters",
-          errors: err.issues,
-        },
-        { status: 400 }
-      );
-    }
+    const data = parsed.data;
 
-    console.error(err);
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    );
+    const job = await createJob({
+      title: data.title,
+      company: data.companyName,     // 🔥 mapping
+      location: data.location,
+      type: data.employmentType,     // 🔥 mapping
+      isRemote: data.isRemote,
+      description: data.description,
+      applyUrl: data.applyUrl,
+    });
+
+    return created(job);
+  } catch (e) {
+    return serverError(e);
   }
 }

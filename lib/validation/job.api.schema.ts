@@ -1,12 +1,12 @@
 import { z } from "zod";
-import { jobSchema } from "./job.schema";
+import { jobCreateSchema } from "./job.schema";
 
 /**
  * POST /api/jobs
  * Create new job (submit job)
  */
 
-export const CreateJobRequestSchema = jobSchema.extend({
+export const CreateJobRequestSchema = jobCreateSchema.extend({
   description: z.string().min(20),
   applyUrl: z.string().url(),
   tags: z.array(z.string()).optional(),
