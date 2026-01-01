@@ -4,17 +4,16 @@ import { badRequest, created, serverError } from "@/lib/http/response";
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  try {
-    const job = await findJobById(params.id);
+  const { id } = await context.params;
 
-    if (!job) {
-      return badRequest("Job not found");
-    }
+  const job = await findJobById(id);
 
-    return created(job);
-  } catch (e) {
-    return serverError(e);
+  if (!job) {
+    return badRequest("Job not found");
   }
+
+  return created(job);
 }
+
