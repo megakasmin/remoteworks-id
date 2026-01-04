@@ -23,3 +23,13 @@ export const CreateJobResponseSchema = z.object({
 });
 
 export type CreateJobResponse = z.infer<typeof CreateJobResponseSchema>;
+
+export const jobListQuerySchema = z.object({
+  page: z.coerce.number().default(1),
+  limit: z.coerce.number().default(10),
+  employmentType: z
+    .enum(["FULL_TIME", "PART_TIME", "CONTRACT", "INTERNSHIP"])
+    .optional(),
+  remote: z.coerce.boolean().optional(),
+});
+

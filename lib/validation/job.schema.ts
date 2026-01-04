@@ -14,13 +14,3 @@ export const jobCreateSchema = z.object({
   description: z.string().min(10),
   applyUrl: z.string().url(),
 });
-
-
-export const jobListQuerySchema = z.object({
-  page: z.coerce.number().default(1),
-  limit: z.coerce.number().default(10),
-  employmentType: z
-    .enum(["FULL_TIME", "PART_TIME", "CONTRACT", "INTERNSHIP"])
-    .optional(),
-  remote: z.coerce.boolean().optional(),
-});
