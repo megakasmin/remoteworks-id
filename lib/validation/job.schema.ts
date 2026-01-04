@@ -9,3 +9,5 @@ export const jobCreateSchema = z.object({
   description: z.string().min(10),
   applyUrl: z.string().url(),
 });
+
+

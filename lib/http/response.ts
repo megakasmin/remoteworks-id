@@ -18,6 +18,13 @@ export function ok(data: unknown) {
   return NextResponse.json(data, { status: 200 });
 }
 
+export function notFound(message = "Not found") {
+  return NextResponse.json(
+    { message },
+    { status: 404 }
+  );
+}
+
 export function serverError(e: unknown) {
   console.error(e);
   return NextResponse.json(
