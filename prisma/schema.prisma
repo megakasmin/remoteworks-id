@@ -21,28 +21,26 @@ enum EmploymentType {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  role      Role     @default(USER)
-  jobs      Job[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id    String @id @default(cuid())
+  email String @unique
+  jobs  Job[]
 }
+
 
 model Job {
-  id             String   @id @default(cuid())
-  title          String
-  companyName    String
-  location       String
-  employmentType EmploymentType
-  isRemote       Boolean
-  description    String
-  applyUrl       String
+  id          String   @id @default(cuid())
+  title       String
+  company     String
+  location    String
+  type        String
+  description String
+  applyUrl    String
+  status      String   @default("DRAFT")
 
-  userId         String
-  user           User     @relation(fields: [userId], references: [id])
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
 
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
+

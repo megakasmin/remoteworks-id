@@ -18,11 +18,11 @@ export async function createJob(data: {
   isRemote: boolean;
   description: string;
   applyUrl: string;
+  userId: string;
 }) {
-  return prisma.job.create({
-    data,
-  });
+  return prisma.job.create({ data });
 }
+
 
 /* ======================
    FIND JOB LIST

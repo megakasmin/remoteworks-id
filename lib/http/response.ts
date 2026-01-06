@@ -40,3 +40,11 @@ export function unauthorized() {
   );
 }
 
+export function forbidden(message = "Forbidden") {
+  return NextResponse.json(
+    { message },
+    { status: 403 }
+  );
+}
+
+

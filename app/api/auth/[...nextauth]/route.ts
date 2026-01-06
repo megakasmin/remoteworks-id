@@ -5,14 +5,26 @@ import { prisma } from "@/lib/prisma";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
+
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
   ],
+
   session: {
-    strategy: "jwt", // ✅ sekarang VALID
+    strategy: "jwt",
+  },
+
+  callbacks: {
+    session({ session, user }) {
+      // 🔥 inject user.id ke session
+      if (session.user) {
+        session.user.id = user.id;
+      }
+      return session;
+    },
   },
 };
 
