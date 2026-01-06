@@ -6,10 +6,11 @@ import { prisma } from "@/lib/prisma";
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    // ✅ WAJIB await
+    const { id } = await context.params;
 
     // 🔐 AUTH
     const session = await auth();
