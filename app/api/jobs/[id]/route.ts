@@ -1,15 +1,15 @@
 import { NextRequest } from "next/server";
-import { ok, notFound, forbidden, serverError } from "@/lib/http/response";
+import { ok, forbidden, serverError } from "@/lib/http/response";
 import { auth } from "@/lib/auth";
 import { updateJob } from "@/lib/repositories/job.repository";
 import { prisma } from "@/lib/prisma";
 
 export async function PATCH(
   req: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = context.params;
+    const { id } = params;
 
     // 🔐 AUTH
     const session = await auth();
@@ -17,7 +17,7 @@ export async function PATCH(
       return forbidden("Unauthorized");
     }
 
-    // 🔒 OWNERSHIP CHECK (SATU QUERY)
+    // 🔒 OWNERSHIP CHECK
     const job = await prisma.job.findFirst({
       where: {
         id,
@@ -26,10 +26,9 @@ export async function PATCH(
     });
 
     if (!job) {
-      return forbidden("You do not own this job or job not found");
+      return forbidden("You do not own this job");
     }
 
-    // ✏️ UPDATE
     const body = await req.json();
     const updated = await updateJob(id, body);
 
