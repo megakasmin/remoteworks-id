@@ -4,11 +4,9 @@ import { findJobById } from "@/lib/repositories/job.repository";
 
 export async function GET(
   _req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await context.params;
-
-  const job = await findJobById(id);
+  const job = await findJobById(params.id);
 
   if (!job) {
     return notFound("Job not found");

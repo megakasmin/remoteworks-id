@@ -32,3 +32,11 @@ export function serverError(e: unknown) {
     { status: 500 }
   );
 }
+
+export function unauthorized() {
+  return NextResponse.json(
+    { message: "Unauthorized" },
+    { status: 401 }
+  );
+}
+
