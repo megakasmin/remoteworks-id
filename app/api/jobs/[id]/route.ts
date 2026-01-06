@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { ok, notFound, forbidden, serverError } from "@/lib/http/response";
 import { auth } from "@/lib/auth";
 import { findJobById, updateJob } from "@/lib/repositories/job.repository";
+import { prisma } from "@/lib/prisma";
 
 export async function PATCH(
   req: NextRequest,
@@ -20,9 +21,16 @@ export async function PATCH(
       return notFound("Job not found");
     }
 
-    if (job.userId !== session.user.id) {
-      return forbidden("You do not own this job");
-    }
+const ownedJob = await prisma.job.findFirst({
+  where: {
+    id,
+    userId: session.user.id,
+  },
+});
+
+if (!ownedJob) {
+  return forbidden("You do not own this job");
+}
 
     const body = await req.json();
 

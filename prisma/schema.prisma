@@ -26,25 +26,28 @@ model User {
   jobs  Job[]
 }
 
-
 model Job {
   id          String   @id @default(cuid())
   title       String
   company     String
   location    String
   type        String
+  isRemote    Boolean
   description String
   applyUrl    String
-  tags        String[]
-  status      String
-  flags       Json
 
-  userId      String        // 🔥 OWNER
-  user        User @relation(fields: [userId], references: [id])
+  status      String   @default("DRAFT")
+  flags       Json     @default("{}")
+
+  // 🔐 OWNERSHIP RELATION (WAJIB)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  
 }
+
+
+
 
 
