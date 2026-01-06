@@ -68,3 +68,22 @@ export async function findJobById(id: string) {
   });
 }
 
+export async function updateJob(
+  id: string,
+  data: {
+    title?: string;
+    company?: string;
+    location?: string;
+    type?: string;
+    isRemote?: boolean;
+    description?: string;
+    applyUrl?: string;
+  }
+) {
+  return prisma.job.update({
+    where: { id },
+    data,
+  });
+}
+
+
