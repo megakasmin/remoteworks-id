@@ -19,7 +19,6 @@ export const authOptions: AuthOptions = {
 
   callbacks: {
     session({ session, user }) {
-      // 🔥 inject user.id ke session
       if (session.user) {
         session.user.id = user.id;
       }
