@@ -63,7 +63,7 @@ export async function findJobs(params: {
    FIND JOB BY ID
 ====================== */
 export async function findJobById(id: string) {
-  return prisma.job.findUnique({
+  return prisma.job.findFirst({
     where: { id },
   });
 }
